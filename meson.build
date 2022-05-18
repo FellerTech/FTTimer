@@ -12,7 +12,12 @@ fttimer_lib = static_library( 'fttimer'
   )
 
 
-gtest_dep = dependency( 'gtest', fallback : ['gtest', 'gtest_dep'])
+# Build gtest
+gtest_proj = subproject('gtest')
+gtest_dep = gtest_proj.get_variable('gtest_dep')
+gmock_dep = gtest_proj.get_variable('gmock_dep')
+
+#gtest_dep = dependency( 'gtest', fallback : ['gtest', 'gtest_dep'])
 
 
 
@@ -36,21 +41,11 @@ tests_src = [ 'tests/FTTimerTest.cpp' ]
 tests = executable('FTTimerTest'
   , sources : tests_src
   , include_directories : ['src']
-  , dependencies : [gtest_dep]
+  , dependencies : [gtest_dep, gmock_dep]
   , link_with : [fttimer_lib]
   )
 
 
-
-
-#tests = executable( 
-#  'gtest-all'
-#  , test_src
-#    , include_directories : ['src']
-#  , link_with : [fttimer_lib]
-#  #  , dependencies : [ gtest_dep , gmock_dep ]
-#  # dependencies : [ gtest_dep ]
-#  )
 
 test( 'gtest tests', tests )
 

@@ -3,23 +3,42 @@
 #include <time.h>
 #include <FTTimer.hpp>
 
-namespace FTTimer
+namespace FTTimer 
 {
   /** 
    * \brief returns current time in milliseconds
    */
   double getTime() {
-    //auto now = std::chrono::system_clock::now();
+    auto now = std::chrono::system_clock::now();
+    double millis = static_cast<double>( 
+        std::chrono::duration_cast<std::chrono::microseconds>( 
+          now.time_since_epoch()
+          ).count()
+        )/1e6;
 
-    std::chrono::time_point<std::chrono::system_clock> now = 
-      std::chrono::system_clock::now();
+         return millis;
+  }
 
-    auto duration = now.time_since_epoch();
-    auto tics = std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
+  /**
+   * \brief constructor
+   */
+  Timer::Timer(void) {
+    timerStart_ = std::chrono::system_clock::now();
+  }
 
-    double usecs = static_cast<double>(tics);
+  /**
+   * \brief sets a reference time for the clock
+   * \return true on success, false on failure
+   */
+  bool Timer::start() {
+    //If we're already running, ignore
+    if( running ) {
+      return false;
+    }
+    running = true;
 
-    return usecs/1e6;
+
+    return true;
   }
 }
 

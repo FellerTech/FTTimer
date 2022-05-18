@@ -3,19 +3,25 @@
 
 #include <FTTimer.hpp>
 #include <gtest/gtest.h>
-//#include <gtest.h>
+
+#define GTEST_COUT std::cerr << "[ MSG      ] [ INFO ]"
 
 /**
  * \brief tests te given time delay
- * \param [in] delay time to delay in microseconds
+ * \param [in] delay time to delay as double
  * \return time between start in milliseconds
  */
-double timeDelay( long delay) {
+double timeDelay( double delay) {
   double start = FTTimer::getTime();
-  std::this_thread::sleep_for(std::chrono::microseconds(delay));
+  auto d = static_cast<uint64_t>(delay *1e6);
+
+  GTEST_COUT << "Sleeping for "<< delay << " seconds.\n";
+
+  std::this_thread::sleep_for(std::chrono::microseconds(d));
+
   double end = FTTimer::getTime();
 
-  return (end-start) * 1e6;
+  return (end-start);
 }
 
 ::testing::AssertionResult IsBetweenInclusive(double val, double a, double b)
@@ -29,10 +35,14 @@ double timeDelay( long delay) {
 
 //Test timer accuracy
 TEST( FTTimerTest, delay) {
-  double range = 100;
-  double delay = 100;
+  double range = 0.0003;
+  double delay = 2;
   double result = timeDelay(delay);
-  EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range ));
+  EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
+    << " Timing Accuracy test";
+
+  EXPECT_FALSE( IsBetweenInclusive( result, delay - range*.1, delay +range*.1)) 
+    << " Timing sanity check";
 }
 
 int main(int argc, char **argv)
