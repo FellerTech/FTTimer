@@ -26,9 +26,9 @@ namespace FTTimer
     std::chrono::system_clock::now();
 
     auto dur = now.time_since_epoch();
-    auto tics = std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
+    auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
 
-    double usecs = static_cast<double>(tics)/ 1e6;
+    double usecs = static_cast<double>(tics)/ 1e9;
 
     return usecs;
   }
@@ -52,10 +52,8 @@ namespace FTTimer
   std::string convertTimestampToString( double timestamp ) {
     using namespace std::chrono;
 
-    auto sec_dur  = seconds { static_cast<uint64_t>(timestamp) };
-    auto usec_dur = microseconds{static_cast<uint64_t>(timestamp * 1e6)};
-//    auto nsec_dur = duration_cast<nanoseconds>( timestamp *1e9);
-//
+    auto usec_dur = nanoseconds{static_cast<uint64_t>(timestamp * 1e9)};
+
     time_point<system_clock> tp = time_point<system_clock>(nanoseconds(usec_dur));
    
     std::stringstream ss;
