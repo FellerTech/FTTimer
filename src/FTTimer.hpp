@@ -1,19 +1,24 @@
 /**
- * \brief C++ header for the FellerTech Timer class
+ * \brief C++ header for the FTTimer class
+ * 
+ * This class is used as a common wrapper to ensure a consistent way of
+ * accessing system across multiple platforms and software stacks. 
  */
-#include <chrono>
-#include <string>
-#include <vector>
-#include <map>
-
 
 namespace FTTimer
 {
   /**
-   * \brief function that returns the current time.
+   * \brief function that returns the current time as a double
    */
-  double getTime();
-    //auto now = std::chrono::system_clock::now();
-    //auto duration = now.time_since_epoch();
-    //auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+  double getTimestamp();
+
+  /**
+   * \brief returns the current time as a string
+   */
+  std::string getTimeString();
+
+  /**
+   * \brief converts the time to a stirng
+   */
+  std::string convertTimestamp( double timestamp );
 }
