@@ -11,6 +11,7 @@ fttimer_lib = static_library( 'fttimer'
   , include_directories : 'src' 
   )
 
+fttimer_inc = include_directories('src');
 fttimer_dep = declare_dependency(
   include_directories : include_directories('src')
   )
@@ -44,7 +45,7 @@ tests_src = [ 'tests/FTTimerTest.cpp' ]
 tests = executable('FTTimerTest'
   , sources : tests_src
   , include_directories : ['src']
-  , dependencies : [gtest_dep, gmock_dep]
+  , dependencies : [ fttimer_dep, gtest_dep, gmock_dep]
   , link_with : [fttimer_lib]
   )
 
