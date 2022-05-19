@@ -1,0 +1,1000 @@
+ 1229  vim FinancialData.txt
+ 1230  echo zip --encrypt file.zip files
+ 1231  zip --encrypt FinancialData.zip FinancialData.txt 
+ 1232  cd ~/develop/QDX/QSim_object_modeling
+ 1233  vim QDXLogger.py 
+ 1234  grep def QDXLogger.py 
+ 1235  ssh-keygen -f ~/.ssh/ramonaoptics
+ 1236  cat ~/.ssh/ramonaoptics
+ 1237  ls ~/.ssh/ramonaoptics
+ 1238  cat ~/.ssh/ramonaoptics.pub
+ 1239  top
+ 1240  htop 
+ 1241  top
+ 1242  cd /mnt/storage/shared/containers/docker-minecraft-server/
+ 1243  docker ls containers
+ 1244  docker ls
+ 1245  docker stop examples_minecraft_1 
+ 1246  htop 
+ 1247  ls -al
+ 1248  ls files/
+ 1249  grep -r seed *
+ 1250  grep server.properties *
+ 1251  vim README.md 
+ 1252  git branch
+ 1253  git pull
+ 1254  git stash
+ 1255  git pull origin master 
+ 1256  docker attach mc
+ 1257  docker-compose build
+ 1258  ls
+ 1259  vim docker-versions-create.sh 
+ 1260  ./docker-versions-create.sh 
+ 1261  git checkout docker-versions-create.sh
+ 1262  git pull
+ 1263  ./docker-versions-create.sh 
+ 1264  ls
+ 1265  docker-compose up
+ 1266  ls
+ 1267  find /mnt/data/datasets/DFT/FinalSet/simulatedbags_5.1/validation/
+ 1268  history
+ 1269  grep server.properties *
+ 1270  grpe -r seed *
+ 1271  grep -r seed *
+ 1272  cd scripts/
+ 1273  ls
+ 1274  grpe seed *
+ 1275  grep properties *
+ 1276  ls
+ 1277  cd ..
+ 1278  find *  |grpe yml
+ 1279  history |grep start
+ 1280  cd ..
+ 1281  ls
+ 1282  docker --list
+ 1283  docker container ls
+ 1284  docker rm 92cee54ef588
+ 1285  ls
+ 1286  cd docker-minecraft-server/
+ 1287  l;s
+ 1288  ls
+ 1289  cd files/
+ 1290  ls
+ 1291  cp server.properties server.properties.orig
+ 1292  cp server.properties.txt server.properties
+ 1293  grep -i hard server.properties
+ 1294  docker rm 92cee54ef588
+ 1295  docker stop 92cee54ef588
+ 1296  docker rm 92cee54ef588
+ 1297  docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1298  docker ls containert
+ 1299  docker container ls
+ 1300  docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1301  docker exec -i mc rcon-cli
+ 1302  docker exec -i jsf rcon-cli
+ 1303  docker start jsf
+ 1304  docker exec -i jsf rcon-cli
+ 1305  docker container ls
+ 1306  docker-compose up
+ 1307  find * |grep docker-compose
+ 1308  docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1309  docker run --help
+ 1310  docker stats 
+ 1311  docker start jsf
+ 1312  docker exec -i jsf rcon-cli
+ 1313  docker container ls
+ 1314  ls -al
+ 1315  sudo service docker restart
+ 1316  docker container ls
+ 1317  docker stop mc
+ 1318  docker start jsf
+ 1319  docker container ls
+ 1320  docker start mc
+ 1321  docker container ls
+ 1322  docker exec -i mc rcon-cli
+ 1323  docker container ls
+ 1324  docker exec -i mc rcon-cli
+ 1325  sudo docker exec -i mc rcon-cli
+ 1326  sudo docker stopmc
+ 1327  sudo docker stop mc
+ 1328  sudo docker start mc
+ 1329  docker container ls
+ 1330  docker exec -i mc rcon-cli
+ 1331  ls
+ 1332  sudo docker rm mc
+ 1333  sudo docker stop mc
+ 1334  sudo docker rm mc
+ 1335  docker container ls
+ 1336  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1337  sudo docker container rm 702d6a728629e3bf3e34b97c3dac423e03d6ce7a64757ad9c6ef68a5f4c4cfb0
+ 1338  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1339  docker exec -i mc rcon-cli
+ 1340  docker exec -i jsf rcon-cli
+ 1341  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1342  sudo docker start 7a4f8016b5ca9f061e2ecf8a547aae0bfbceb7d7d81ff01ecf1504c0aedf4e3d
+ 1343  docker exec -i jsf rcon-cli
+ 1344  ls
+ 1345  cd ..
+ 1346  ls
+ 1347  sudo ./docker-versions-create.sh 
+ 1348  git stash
+ 1349  sudo ./docker-versions-create.sh 
+ 1350  ls
+ 1351  cd scripts/
+ 1352  ls
+ 1353  ./start
+ 1354  cd ..
+ 1355  ls
+ 1356  ./scripts/start
+ 1357  cd bin/
+ 1358  ls
+ 1359  sudo service docker restart
+ 1360  docker container ls
+ 1361  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1362  sudo docker rm 7a4f8016b5ca9f061e2ecf8a547aae0bfbceb7d7d81ff01ecf1504c0aedf4e3d
+ 1363  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1364  docker exec -i jsf rcon-cli
+ 1365  dmesg 
+ 1366  sudo docker run -d -it -p 25565:25565 --name jsf itzg/minecraft-server
+ 1367  sudo docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1368  docker exec -i mc rcon-cli
+ 1369  sudo docker stop mc
+ 1370  docker exec -i mc rcon-cli
+ 1371  sudo docker rm mc
+ 1372  sudo docker build
+ 1373  ls
+ 1374  cd ..
+ 1375  sudo docker 
+ 1376  ls
+ 1377  sudo docker build .
+ 1378  sudo docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1379  docker exec -i mc rcon-cli
+ 1380  ps aux |grpe mc
+ 1381  ps aux |grep mc
+ 1382  ps aux |grep docker
+ 1383  docker status
+ 1384  docker start mc
+ 1385  docker exec -i mc rcon-cli
+ 1386  sudo docker exec -i mc rcon-cli
+ 1387  sudo docker start mc
+ 1388  sudo docker exec -i mc rcon-cli
+ 1389  docker image prune 
+ 1390  sudo docker start mc
+ 1391  sudo docker exec -i mc rcon-cli
+ 1392  ps aux |grep mc
+ 1393  ps aux |grep docker-versions-create.sh 
+ 1394  ps aux |grep docker
+ 1395  sudo service docker restart
+ 1396  sudo docker start mc
+ 1397  docker stats mc
+ 1398  docker info 
+ 1399  find * |grep yml
+ 1400  cd tests/
+ 1401  ls
+ 1402  vim test.sh 
+ 1403  cd generic-packs/
+ 1404  ls
+ 1405  cd ..
+ 1406  ls 
+ 1407  docker-compose up
+ 1408  cd ..
+ 1409  find * |grep docker.-compose.yml
+ 1410  find * |grep docker-compose.yml
+ 1411  cd tests/
+ 1412  ls
+ 1413  cd generic-packs/
+ 1414  ls
+ 1415  cd packs/
+ 1416  ls
+ 1417  cd ../../..
+ 1418  ls
+ 1419  find * |grep docker-compose.yml
+ 1420  cd examples/
+ 1421  ls
+ 1422  docker-compose build
+ 1423  docker-compose build 
+ 1424  docker-compose up
+ 1425  docker-compose stop
+ 1426  htop 
+ 1427  ps aux |grep -i docker
+ 1428  history
+ 1429  docker-compose stop
+ 1430  docker-compose status
+ 1431  docker-compose top
+ 1432  htop 
+ 1433  top
+ 1434  htop 
+ 1435  ps aux |grep -i synol
+ 1436  sudo reboot
+ 1437  htop 
+ 1438  fg
+ 1439  fd -h
+ 1440  df -
+ 1441  fg
+ 1442  history |grep batch
+ 1443  python3.9 batch_process.py -dirs /mnt/data/datasets/DFT/FinalSet/v5.9
+ 1444  vim batch_process.py 
+ 1445  python3.9 batch_process.py -dirs /mnt/data/datasets/DFT/FinalSet/v5.9
+ 1446  df -hhhhhhhhhhh
+ 1447  df ------------h
+ 1448  df -f
+ 1449  df -h
+ 1450  python3.9 batch_process.py -dirs /mnt/data/datasets/DFT/FinalSet/v5.9
+ 1451  git branch
+ 1452  git pull origin main 
+ 1453  python3.9 batch_process.py -dirs /mnt/data/datasets/DFT/FinalSet/v5.9
+ 1454  git branch
+ 1455  git pull origin main 
+ 1456  grep -i fallback *
+ 1457  vim QDXPacker.py 
+ 1458  python3.9 batch_process.py -dirs /mnt/data/datasets/DFT/FinalSet/v5.9
+ 1459  bg
+ 1460  git commit -am 
+ 1461  git commit -am "enclosure naming fix"
+ 1462  git push origin main 
+ 1463  fg
+ 1464  ps aux |grep -i synolo
+ 1465  df
+ 1466  ls /media/
+ 1467  df |grep sto
+ 1468  ls /mnt/storage/
+ 1469  ls /mnt/storage/QDX/Virtual_modeling/
+ 1470  cd /mnt/data
+ 1471  ls
+ 1472  cd ..
+ 1473  ls
+ 1474  ls -al
+ 1475  rm data
+ 1476  ln -s /mnt/storage/QDX/Virtual_modeling/SynologyDrive/data .
+ 1477  ls -al
+ 1478  cd data/
+ 1479  ls
+ 1480  cd datasets/
+ 1481  ls
+ 1482  cd DFT/FinalSet/
+ 1483  ls
+ 1484  cd ../../..
+ 1485  cd ..
+ 1486  ls -al
+ 1487  cd data/datasets/DFT/FinalSet/
+ 1488  ls
+ 1489  ls v5.4
+ 1490  ps aux |Grep -i synol
+ 1491  ps aux |grep -i synol
+ 1492  df -h
+ 1493  htop 
+ 1494  ls
+ 1495  synology-drive 
+ 1496  ls v5.4
+ 1497  ls
+ 1498  ps aux |Grep -i synol
+ 1499  ps aux |grep -i synol
+ 1500  top
+ 1501  ls
+ 1502  cd ~/develop/QDX/QSim_object_modeling_dev/
+ 1503  git branch
+ 1504  cd ../QSim_object_modeling
+ 1505  git branch
+ 1506  git checkout main
+ 1507  g
+ 1508  git checkout QDXPacker.py
+ 1509  git pull
+ 1510  git checkout main 
+ 1511  git pull origin main 
+ 1512  synology-drive 
+ 1513  ps aux |grep -i synolog
+ 1514  .SynologyDrive/SynologyDrive.app/bin/cloud-drive-connect 
+ 1515  .SynologyDrive/SynologyDrive.app/bin/cloud-drive-ui 
+ 1516  exit
+ 1517  sudo reboot
+ 1518  sudo synology-drive 
+ 1519  synology-drive 
+ 1520  exit
+ 1521  cd Downloads/
+ 1522  ls
+ 1523  sudo dpkg -i projectlibre_1.9.3-1.deb 
+ 1524  ls /mnt/data/DFT_Objects/*
+ 1525  ls /mnt/data/DFT_Objects/* |grep obj
+ 1526  ls /mnt/data/DFT_Objects/* |grep obj |sort |uniq
+ 1527  ls /mnt/data/DFT_Objects/* |grep obj |sort |uniq |grep -c obj
+ 1528  cd ~/
+ 1529  ls
+ 1530  cd .ssh/
+ 1531  ls
+ 1532  cd ..
+ 1533  ls
+ 1534  mkdir proxies
+ 1535  mv ramona_proxy proxies/
+ 1536  cd proxies/
+ 1537  ls
+ 1538  cat ramona_proxy 
+ 1539  chmod +x ramona_proxy 
+ 1540  ./ramona_proxy 
+ 1541  ./ramona_proxy grep ssh ramona_proxy 
+ 1542  cat ramona_proxy 
+ 1543  cd ../.ssh/
+ 1544  ssh -i ramonaoptics -N -D 2200 -X russell@gigazoom.ramonaoptics.com -p2200 
+ 1545  cd ~/develop/aqueti/
+ 1546  ls
+ 1547  cd AquetiOS/
+ 1548  ls
+ 1549  vim CMakeLists.txt 
+ 1550  git branch
+ 1551  git log
+ 1552  git submodule init 
+ 1553  cd dependencies/aqt_Embed/
+ 1554  ls
+ 1555  cd ../...
+ 1556  ls
+ 1557  cd ..
+ 1558  vim CMakeLists.txt 
+ 1559  grep AQT *
+ 1560  VIM Superbuild.cmake 
+ 1561  vim Superbuild.cmake 
+ 1562  git submodule init 
+ 1563  git submodule update
+ 1564  vim Superbuild.cmake 
+ 1565  git diff Superbuild.cmake
+ 1566  ls dependencies/
+ 1567  cd dependencies/api_interface/
+ 1568  ls
+ 1569  cd ..
+ 1570  cd JsonBox/
+ 1571  ls
+ 1572  cd..
+ 1573  cd ../..
+ 1574  grep JsonBox Superbuild.cmake 
+ 1575  vim Superbuild.cmake 
+ 1576  grep add_external Superbuild.cmake 
+ 1577  vim Superbuild.cmake 
+ 1578  grep jsonbox *
+ 1579  vim Superbuild.cmake 
+ 1580  grpe JsonBox *
+ 1581  grep JsonBox *
+ 1582  cd dependencies/JsonBox/
+ 1583  cd ../..
+ 1584  grep git@ *
+ 1585  ls
+ 1586  vim Superbuild.cmake 
+ 1587  grep "git:"
+ 1588  grep "git:" *
+ 1589  grep submodule *
+ 1590  grep "git@" *
+ 1591  grep -ilr  "git@" *
+ 1592  vim CMakeLists.txt 
+ 1593  grep -ilr github *
+ 1594  grep -ilr github * |grep -v dependency
+ 1595  grep -ilr github * |grep -v dependen
+ 1596  vim CMakeLists.txt 
+ 1597  git log
+ 1598  git diff
+ 1599  grep submodule *
+ 1600  grep -l submodule *
+ 1601  vim CMakeLists.txt 
+ 1602  ls dependencies/
+ 1603  cd .git
+ 1604  ls
+ 1605  vim config 
+ 1606  cd ..
+ 1607  git submodule update
+ 1608  git submodule init 
+ 1609  git submodule update
+ 1610  ls dependencies/JsonBox/
+ 1611  git submodule update JsonBox
+ 1612  grep JsonBox *
+ 1613  cd dependencies/JsonBox/
+ 1614  ls
+ 1615  git branch
+ 1616  git log
+ 1617  git clone git@gitub.com:Aqueti/JsonBox .
+ 1618  ls
+ 1619  ls -al
+ 1620  cd .gi
+ 1621  cd .git
+ 1622  ls
+ 1623  vim .git 
+ 1624  cd ../..
+ 1625  vim .git/modules/dependencies/JsonBox/
+ 1626  vim .git/modules/dependencies/JsonBox/config 
+ 1627  git submodule update
+ 1628  ls dependencies/JsonBox/
+ 1629  git submodule init 
+ 1630  ls dependencies/JsonBox/
+ 1631  git submodule update
+ 1632  cd dependencies/JsonBox/
+ 1633  git branch
+ 1634  git pull
+ 1635  ls
+ 1636  git branch
+ 1637  vim .git 
+ 1638  cd ../..
+ 1639  git submodule update JsonBox
+ 1640  vim .git/config 
+ 1641  git submodule deeinit JsonBox
+ 1642  git submodule init JsonBox
+ 1643  rm -r dependencies/JsonBox/
+ 1644  git submodule init JsonBox
+ 1645  cd ..
+ 1646  cd AquetiOS/dependencies/
+ 1647  ls
+ 1648  mkdir JsonBox
+ 1649  cd JsonBox/
+ 1650  git clone git@github.com:Aqueti/JsonBox.git .
+ 1651  cd ..
+ 1652  ls fovea/
+ 1653  grep cuda fovea/
+ 1654  cd fovea/
+ 1655  ls
+ 1656  grep gcc8
+ 1657  grep gcc8 *
+ 1658  grep gcc-8 *
+ 1659  grep -r gcc-8 *
+ 1660  ls
+ 1661  sudo apt install nvcc
+ 1662  /usr/bin/cc -h
+ 1663  ls -al /usr/bin/cc 
+ 1664  ls /etc/alternatives/cc
+ 1665  ls /etc/alternatives/cc -al
+ 1666  cd ..
+ 1667  ls
+ 1668  cd ..
+ 1669  find * |grep atl
+ 1670  cd atl/
+ 1671  ls
+ 1672  git branch
+ 1673  git pull origin master 
+ 1674  git log
+ 1675  git branch -a
+ 1676  cd ..
+ 1677  ls
+ 1678  dpkg --list |grep docker
+ 1679  ls /mnt/data/datasets/DFT/FinalSet/v5.12
+ 1680  ls /mnt/data/datasets/DFT/FinalSet/v5.9/
+ 1681  cd ~/develop/QDX/QSim_object_modeling
+ 1682  ls
+ 1683  ls |grep py
+ 1684  git branch
+ 1685  history |grep multi
+ 1686  ls
+ 1687  ls |grep py
+ 1688  df -h
+ 1689  ls ..
+ 1690  vim ~/develop/containers/docker/blender/docker-compose.yml 
+ 1691  vim minecraft-data/server.properties 
+ 1692  vim commands
+ 1693  vim docker-compose.yml 
+ 1694  find * |grep data
+ 1695  find * |grep compose
+ 1696  ls build/compose/
+ 1697  docker container logs
+ 1698  docker container log
+ 1699  docker container logs mc 
+ 1700  ls
+ 1701  ls build/
+ 1702  ls build/compose/
+ 1703  find * |grep data
+ 1704  docker stop mc
+ 1705  mkdir data
+ 1706  vim docker-compose.yml 
+ 1707  mv data/ minecraft-data
+ 1708  docker-compose up
+ 1709  docker ps 
+ 1710  docker stop mc-new
+ 1711  docker exec -i rcon-cli
+ 1712  sudo docker exec -i rcon-cli
+ 1713  exec -i rcon-cli
+ 1714  exec -i mc rcon-cli
+ 1715  docker exec -i mc rcon-cli
+ 1716  docker ps
+ 1717  docker exec -i docer-minecraft-server_mc_1 rcon-cli
+ 1718  docker ps
+ 1719  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1720  sudo service ufw status
+ 1721  sudo service ufw stop
+ 1722  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1723  sudo service ufw start
+ 1724  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1725  sudo apt install rcon
+ 1726  docker exec -i docker-minecraft-server_mc_1 rcon-cli -a 0.0.0.0:25575
+ 1727  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575
+ 1728  sudo docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575
+ 1729  docker attach mc
+ 1730  docker ps
+ 1731  docker stop docker-minecraft-server_mc_1
+ 1732  docker ps
+ 1733  ls
+ 1734  ls minecraft-data/
+ 1735  docker ps
+ 1736  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1737  sudo docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1738  sudo docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575
+ 1739  vim docker-compose.yml 
+ 1740  vim minecraft-data/server.properties 
+ 1741  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1742  docker exec -i docker-minecraft-server_mc_1 rcon-cli -h
+ 1743  docker exec --host docker-minecraft-server_mc_1 rcon-cli--port 25575
+ 1744  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575
+ 1745  vim minecraft-data/server.properties 
+ 1746  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25565
+ 1747  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25565 
+ 1748  vim minecraft-data/server.properties 
+ 1749  ssh minecraft@locahost
+ 1750  vim docker-compose.yml 
+ 1751  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25565 
+ 1752  docker exec -i docker-minecraft-server_mc_1 rcon-cli
+ 1753  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 
+ 1754  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 -h
+ 1755  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 --password minecraft
+ 1756  ls
+ 1757  viu minecraft-data/server.properties 
+ 1758  vim minecraft-data/server.properties 
+ 1759  sudo vim minecraft-data/server.properties 
+ 1760  docker ps
+ 1761  docker stop docker-minecraft-server_mc_1
+ 1762  echo "docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 --password minecraft" > server_info
+ 1763  docker-minecraft-server_mc_1
+ 1764  sudo docker-minecraft-server_mc_1
+ 1765  docker ps
+ 1766  histoyr |grep cli
+ 1767  history |grep cli
+ 1768  echo "docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 --password minecraft" > server_info
+ 1769  docker exec -i docker-minecraft-server_mc_1 rcon-cli --port 25575 --password minecraft
+ 1770  ls
+ 1771  cat server_info 
+ 1772  docker ps
+ 1773  docker stop docker-minecraft-server_mc_1
+ 1774  ls
+ 1775  vim minecraft-data/
+ 1776  vim minecraft-data/server.properties 
+ 1777  docker ps
+ 1778  docker stop docker-minecraft-server_mc_1
+ 1779  ls
+ 1780  vim docker-compose.yml 
+ 1781  ls ./minecraft-data/
+ 1782  sudo vim ./minecraft-data/server.properties 
+ 1783  ls /tmp/
+ 1784  sudo service smbd status
+ 1785  smbpasswd 
+ 1786  dmesg 
+ 1787  sudo vim /etc/fstab 
+ 1788  cat /etc/fstab 
+ 1789  sudo mount /mnt/code/
+ 1790  smbpasswd 
+ 1791  ping 127.0.0.1
+ 1792  ifconfig
+ 1793  sudo reboot
+ 1794  cd /mnt/data/
+ 1795  ls
+ 1796  cd ..
+ 1797  ls
+ 1798  cd storage/
+ 1799  ls
+ 1800  cd shared/
+ 1801  ls
+ 1802  cd containers/
+ 1803  ls
+ 1804  cd docker-minecraft-server/
+ 1805  ps aux |grep docker
+ 1806  ps aux |grep min
+ 1807  git branch
+ 1808  ls
+ 1809  git pull
+ 1810  git branch -a
+ 1811  ls
+ 1812  vim README.md 
+ 1813  hostname -a
+ 1814  ls
+ 1815  docker-compose -h
+ 1816  docker-compose ls
+ 1817  docker -ls
+ 1818  docker ls
+ 1819  sudo docker ps
+ 1820  sudo docker stop examples_minecraft_1
+ 1821  sudo docker ps
+ 1822  docker-compose up
+ 1823  ls
+ 1824  cd scripts/
+ 1825  ls
+ 1826  ./start-setupWorld 
+ 1827  sudo ./start-setupWorld 
+ 1828  cd ..
+ 1829  ls
+ 1830  history |grep start
+ 1831  ls
+ 1832  vim docker-compose.yml
+ 1833  sudo docker-compose build
+ 1834  cd build/
+ 1835  ls
+ 1836  cat run.sh 
+ 1837  mkdir docker-compose
+ 1838  mv ../docker-compose.yml docker-compose/
+ 1839  mv docker-compose/ compose
+ 1840  cd compose/
+ 1841  sudo docker-compose build
+ 1842  cd ../..
+ 1843  ls
+ 1844  vim docker-versions-create.sh 
+ 1845  cd bin/
+ 1846  ls
+ 1847  cd ..
+ 1848  ls
+ 1849  history |grpe mc
+ 1850  history |grep mc
+ 1851  cd ..
+ 1852  ls
+ 1853  cd mi
+ 1854  cd docker-minecraft-server/
+ 1855  ls
+ 1856  docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1857  docker stop mc
+ 1858  docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1859  docker remove nc
+ 1860  docker rm mc
+ 1861  docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1862  docker stop mc
+ 1863  docker rm mc
+ 1864  docker-compose -h
+ 1865  docker-compose build
+ 1866  mv build/compose/docker-compose.yml  .
+ 1867  docker-compose build
+ 1868  git pull
+ 1869  vim docker-compose.yml 
+ 1870  docker-compose run
+ 1871  docker ls
+ 1872  docker images
+ 1873  vim docker-compose.yml 
+ 1874  docker rm itzg/minecraft-server
+ 1875  docker images
+ 1876  docker system info
+ 1877  docker system prune
+ 1878  docker-compose build
+ 1879  ls
+ 1880  mv docker-compose.
+ 1881  mv minecraft.yml basic.ym
+ 1882  vim basic.yml 
+ 1883  docker-compose -h
+ 1884  docker-compose -config basic.yml 
+ 1885  docker-compose --env-file basic.yml 
+ 1886  docker-compose create --env-file basic.yml 
+ 1887  docker-compose build --env-file basic.yml 
+ 1888  docker-compose start --env-file basic.yml 
+ 1889  vim basic.yml 
+ 1890  docker images 
+ 1891  docker image rm itzg/minecraft-server
+ 1892  docker images 
+ 1893  docker-compose start --env-file basic.yml 
+ 1894  docker-compose build --env-file basic.yml 
+ 1895  docker-compose build
+ 1896  docker-compose build --env-file basic.yml 
+ 1897  git pull
+ 1898  itzg/minecraft-server
+ 1899  docker run -d -it -p 25565:25565 -e EULA=TRUE itzg/minecraft-server
+ 1900  docker-compose build/
+ 1901  docker-compose build --config-file basic.yml 
+ 1902  docker-compose -h
+ 1903  docker-compose build --config-file basic.yml 
+ 1904  docker images
+ 1905  vim basic.yml
+ 1906  docker-compose -h
+ 1907  docker-compose build --env-file basic.yml 
+ 1908  docker-compose --env-file ./basic.yml build
+ 1909  docker-compose --env-file basic.yml build
+ 1910  mv basic.yml docker-compose.yml
+ 1911  docker-compose build
+ 1912  docker-compose start
+ 1913  docker-compose build
+ 1914  vim docker-compose.yml 
+ 1915  ls
+ 1916  vim Dockerfile 
+ 1917  docker run-d -it -p 25565:25565 -e EULA=TRUE itzg/minecraft-server
+ 1918  docker run -d -it -p 25565:25565 -e EULA=TRUE itzg/minecraft-server
+ 1919  docker ps 
+ 1920  docker exec -i mc rcon-cli
+ 1921  docker stop  itzg/minecraft-server
+ 1922  docker stop optimistic_lichterman 
+ 1923  grep optimi *
+ 1924  docker-compose build/
+ 1925  docker-compose build
+ 1926  echo  docker run -d -it -p 25565:25565 --name mc itzg/minecraft-server
+ 1927  docker run -d -it -p 25565:25565 --name mc -e EULA=TRUE itzg/minecraft-server
+ 1928  docker-compose build/
+ 1929  docker-compose build
+ 1930  docker ps 
+ 1931  docker stop mc
+ 1932  docker-compose build
+ 1933  docker-compose run
+ 1934  docker-compose up
+ 1935  docker stop mc
+ 1936  docker run --rm --volumes-from mc -v mc:/new alpine cp -avT /data /new
+ 1937  docker run -d -it --name mc-new -v mc:/data -p 25565:25565 -e EULA=TRUE -e MEMORY=2G itzg/minecraft-server
+ 1938  docker-compose up
+ 1939  vim docker-compose.yml 
+ 1940  docker-compose up
+ 1941  vim docker-compose.yml 
+ 1942  find * |grep itzg
+ 1943  docker-compose up
+ 1944  vim docker-compose.yml 
+ 1945  ls
+ 1946  ls minecraft-data/
+ 1947  cd minecraft-data/
+ 1948  ls
+ 1949  ls world/
+ 1950  ls world/data
+ 1951  find * |grep config
+ 1952  cd ..
+ 1953  ls
+ 1954  find * |grep config
+ 1955  grep -ilr seed *
+ 1956  vim minecraft-data/server.properties 
+ 1957  ls -al
+ 1958  ls -al minecraft-data/
+ 1959  sudo vim minecraft-data/server.properties 
+ 1960  cd ..
+ 1961  docker-compose up
+ 1962  ls
+ 1963  cd docker-minecraft-server/
+ 1964  ls
+ 1965  sudo docker-compose up
+ 1966  sudo docker-compose build
+ 1967  cd docker-minecraft-server/
+ 1968  sudo docker-compose up
+ 1969  ifconfig
+ 1970  ifconfig 
+ 1971  ifconfig
+ 1972  ifconfig  |grep 192
+ 1973  sudo vim /etc/fstab 
+ 1974  cat /etc/fstab 
+ 1975  mkdir /mnt/code
+ 1976  sudo mount /mnt/code/
+ 1977  sudo apt install nfs-common 
+ 1978  sudo mount /mnt/code/
+ 1979  sudo vim /etc/fstab 
+ 1980  sudo mount /mnt/code/
+ 1981  touch /mnt/code/test
+ 1982  cd develop/
+ 1983  ls
+ 1984  cd containers
+ 1985  ls
+ 1986  git branch
+ 1987  git status
+ 1988  cd docker/blender/
+ 1989  git diff Dockerfile
+ 1990  df
+ 1991  ls
+ 1992  df -h
+ 1993  ls
+ 1994  df -h
+ 1995  ls
+ 1996  vim ../LJ/src/lumberjack.hpp 
+ 1997  ls
+ 1998  vim FTTimer.
+ 1999  vim FTTimer.cpp 
+ 2000  cd ../LJ/
+ 2001  ls
+ 2002  cd src/
+ 2003  ls
+ 2004  vim lumberjack_impl.hpp 
+ 2005  vim lumberjack_basic.cpp 
+ 2006  ls
+ 2007  cd ..
+ 2008  ls
+ 2009  vim meson.build 
+ 2010  cd ../FTTimer/
+ 2011  ls
+ 2012  ls src/
+ 2013  vim meson.build 
+ 2014  vim ../LJ/meson.build 
+ 2015  cd ../LJ/
+ 2016  git branch
+ 2017  git branch -a
+ 2018  git status
+ 2019  ls src/
+ 2020  git add src/
+ 2021  git status
+ 2022  git rm src/*.swp
+ 2023  git status
+ 2024  git rm src/.lumberjack.hpp.swp 
+ 2025  git status
+ 2026  git checkout src/.lumberjack.hpp.swp 
+ 2027  git status
+ 2028  git checkout src/.*.swp 
+ 2029  git rm --cached src/.lumberjack.hpp.swp 
+ 2030  git rm --cached src/.lumberjack_basic.cpp.swp 
+ 2031  git status
+ 2032  git commit -am "filling in classes"
+ 2033  git branch
+ 2034  git push origin meson 
+ 2035  cd ../FTTimer/
+ 2036  ls
+ 2037  cat ../LJ/README.md 
+ 2038  mesong ../build/FTTimer
+ 2039  meson ../build/FTTimer
+ 2040  vim src/FTTimer.cpp 
+ 2041  ls
+ 2042  ls src/FTTimer.hpp 
+ 2043  vim src/FTTimer.cpp 
+ 2044  meson --reconfigure ../build/FTTimer
+ 2045  vim meson.build 
+ 2046  meson --reconfigure ../build/FTTimer
+ 2047  vim meson.build 
+ 2048  meson --reconfigure ../build/FTTimer
+ 2049  vim src/FTTimer.hpp 
+ 2050  vim src/FTTimer.cpp 
+ 2051  vim src/FTTimer.hpp 
+ 2052  vim src/FTTimer.cpp j
+ 2053  vim src/FTTimer.hpp 
+ 2054  vim src/FTTimer.cpp j
+ 2055  vim src/FTTimer.cpp
+ 2056  git branch
+ 2057  git commit -am "builds, no unit tests"
+ 2058  git push origin main 
+ 2059  git status
+ 2060  ls src/
+ 2061  git add src
+ 2062  git commit -am "now has code"
+ 2063  git add meson.build 
+ 2064  ls
+ 2065  git status
+ 2066  git commit -am "now has meson build support"
+ 2067  git branch
+ 2068  git push origin main 
+ 2069  vim meson.build 
+ 2070  ls
+ 2071  mkdir subproject
+ 2072  mkdir subproject/gtest
+ 2073  vim meson.build 
+ 2074  ls
+ 2075  rmdir subproject/gtest/
+ 2076  cd subproject/
+ 2077  git clone https://github.com/google/googletest.git
+ 2078  ls googletest/
+ 2079  cd ..
+ 2080  vim meson.build 
+ 2081  history |grep reconfigure
+ 2082  meson --reconfigure ../build/FTTimer
+ 2083  ls subproject/
+ 2084  vim meson.build 
+ 2085  mv subproject Subproject
+ 2086  meson --reconfigure ../build/FTTimer
+ 2087  vm Subproject/ subprojects
+ 2088  mv Subproject/ subprojects
+ 2089  meson --reconfigure ../build/FTTimer
+ 2090  ls subprojects/googletest/
+ 2091  vim meson.build 
+ 2092  meson --reconfigure ../build/FTTimer
+ 2093  vim meson.build 
+ 2094  meson --reconfigure ../build/FTTimer
+ 2095  vim meson.build 
+ 2096  mkdir tests
+ 2097  vim FTTImerTest.cpp
+ 2098  meson --reconfigure ../build/FTTimer
+ 2099  ls
+ 2100  ls tests/
+ 2101  mv FTTImerTest.cpp tests/FTTimerTest.cpp
+ 2102  vim meson.build 
+ 2103  ls tests/
+ 2104  vim meson.build 
+ 2105  ls tests/
+ 2106  vim meson.build 
+ 2107  meson --reconfigure ../build/FTTimer
+ 2108  vim meson.build 
+ 2109  meson --reconfigure ../build/FTTimer
+ 2110  vim meson.build 
+ 2111  meson --reconfigure ../build/FTTimer
+ 2112* vim tests/FTTimerTest.cpp ls 
+ 2113  find * |grep gtest.h
+ 2114  vim tests/FTTimerTest.cpp 
+ 2115  vim meson.build 
+ 2116  vim tests/FTTimerTest.cpp 
+ 2117  vim meson.build 
+ 2118  vim tests/FTTimerTest.cpp 
+ 2119  vim meson.build 
+ 2120  history |grpe re
+ 2121  history |grep recon
+ 2122  meson --reconfigure ../build/FTTimer
+ 2123  vim meson.build 
+ 2124  meson --reconfigure ../build/FTTimer
+ 2125  vim meson.build 
+ 2126  meson --reconfigure ../build/FTTimer
+ 2127  vim meson.build 
+ 2128  meson --reconfigure ../build/FTTimer
+ 2129  vim meson.build 
+ 2130  meson --reconfigure ../build/FTTimer
+ 2131  cd subprojects/googletest/
+ 2132  ls
+ 2133  git branch
+ 2134  git pull origin 
+ 2135  git branch -a
+ 2136  git pull origin main 
+ 2137  cd ../..
+ 2138  meson --reconfigure ../build/FTTimer
+ 2139  ls
+ 2140  vim tests/FTTimerTest.cpp 
+ 2141  meson --reconfigure ../build/FTTimer
+ 2142  vim tests/FTTimerTest.cpp 
+ 2143  cd subprojects/gt
+ 2144  cd subprojects/
+ 2145  ls
+ 2146  cd googletest/
+ 2147  ls
+ 2148  git branc
+ 2149  git branch 
+ 2150  git log
+ 2151  cd ../..
+ 2152  vim meson.build 
+ 2153  meson --reconfigure ../build/FTTimer
+ 2154  vim meson.build 
+ 2155  vim tests/FTTimerTest.cpp 
+ 2156  meson --reconfigure ../build/FTTimer
+ 2157  meson ../build/FTTimer
+ 2158  sudo apt purge googletest 
+ 2159  meson --reconfigure ../build/FTTimer
+ 2160  ls subprojects/
+ 2161  vim meson.build 
+ 2162  meson wrap install gtest
+ 2163  ls subprojects/
+ 2164  rm -r subprojects/googletest
+ 2165  ls subprojects/
+ 2166  meson --reconfigure ../build/FTTimer
+ 2167  meson wrap install gtest
+ 2168  cd subprojects/
+ 2169  ls
+ 2170  vim gtest.wrap 
+ 2171  meson --reconfigure ../build/FTTimer
+ 2172  cd ..
+ 2173  meson --reconfigure ../build/FTTimer
+ 2174  ls
+ 2175  meson --version
+ 2176  meson --reconfigure ../build/FTTimer
+ 2177  meson ../build/FTTimer
+ 2178  cd src/
+ 2179  ls
+ 2180  cd ../subprojects/
+ 2181  ls
+ 2182  vim gtest.wrap 
+ 2183  cd ..
+ 2184  vim meson.build 
+ 2185  meson --reconfigure ../build/FTTimer
+ 2186  meson ../build/FTTimer
+ 2187  vim meson.build 
+ 2188  meson ../build/FTTimer
+ 2189  vim meson.build 
+ 2190  meson ../build/FTTimer
+ 2191  vim meson.build 
+ 2192  meson --reconfigure ../build/FTTimer
+ 2193  find * |grep gtest
+ 2194  find * |grep googletest
+ 2195  vim meson.build 
+ 2196  vim tests/FTTimerTest.cpp 
+ 2197  meson --reconfigure ../build/FTTimer
+ 2198  vim meson.build 
+ 2199  meson --reconfigure ../build/FTTimer
+ 2200  vim meson.build 
+ 2201  meson --reconfigure ../build/FTTimer
+ 2202  vim meson.build 
+ 2203  meson --reconfigure ../build/FTTimer
+ 2204  vim meson.build 
+ 2205  meson --reconfigure ../build/FTTimer
+ 2206  vim meson.build 
+ 2207  meson --reconfigure ../build/FTTimer
+ 2208  vim meson.build 
+ 2209  meson --reconfigure ../build/FTTimer
+ 2210  vim meson.build 
+ 2211  meson --reconfigure ../build/FTTimer
+ 2212  vim meson.build 
+ 2213  meson --reconfigure ../build/FTTimer
+ 2214  vim meson.build 
+ 2215  meson --reconfigure ../build/FTTimer
+ 2216  vim meson.build 
+ 2217  meson --reconfigure ../build/FTTimer
+ 2218  vim meson.build 
+ 2219  meson --reconfigure ../build/FTTimer
+ 2220  vim tests/FTTimerTest.cpp 
+ 2221  find * |grpe gtest.h
+ 2222  find * |grep gtest.h
+ 2223  vim tests/FTTimerTest.cpp 
+ 2224  git status
+ 2225  git add subprojects
+ 2226  git add tests/
+ 2227  history 
+ 2228  history >> log
