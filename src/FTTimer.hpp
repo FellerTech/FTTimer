@@ -13,12 +13,20 @@ namespace FTTimer
   double getTimestamp();
 
   /**
-   * \brief returns the current time as a string
+   * \brief converts a timestamp to a duration
    */
+
+
+
+  /**
+   * \brief returns the current time as a string
+   *
   std::string getTimeString();
+  */
 
   /**
    * \brief converts the time to a stirng
-   */
-  std::string convertTimestamp( double timestamp );
+  */
+  std::string convertTimestampToString( double timestamp );
+
 }
