@@ -1,3 +1,4 @@
+#include <string>
 #include <chrono>
 #include <thread>
 #include <FTTimer.hpp>
@@ -5,6 +6,8 @@
 #include <gmock/gmock.h>
 
 #define GTEST_COUT std::cerr << "[ MSG      ] [ INFO ]"
+
+using ::testing::HasSubstr;
 
 /**
  * \brief tests te given time delay
@@ -33,7 +36,9 @@ double timeDelay( double delay) {
                << val << " is outside the range " << a << " to " << b;
 };
 
+/////////////////////////////////////////////
 //Test timer accuracy
+/////////////////////////////////////////////
 TEST( FTTimerTest, delay) {
   double range = 0.0003;
   double delay = 2;
@@ -45,28 +50,27 @@ TEST( FTTimerTest, delay) {
     << " Timing sanity check";
 };
 
+/////////////////////////////////////////////
 //Test date output string
+/////////////////////////////////////////////
 TEST( FTTimerTest, string_output ) {
 
   //Test time = 0;
   std::string dateString = FTTimer::convertTimestampToString( 0 );
   std::string UTCString =  "1970-01-01 00:00:00.000000000";
-  EXPECT_EQ( UTCString, dateString ) << "UTC 0 Date string "<<dateString << " != "<<UTCString ;
-
-  /*
-  //Establish reference date
-  auto now = std::chrono::system_clock::now();
-
-  std::stringstream ss;
-  ss << std::ctime(now);
-  std::string refDate = ss.str();
+  EXPECT_EQ( UTCString, dateString ) << "UTC 0 Date string "<<dateString 
+    << " != "<<UTCString 
+    ;
 
   double ts = FTTimer::getTimestamp();
-  GTEST_COUT << "Timestamp: "<< ts << ".";
-  std::string dateString = FTTimer::convertTimestampToString( ts );
-//  EXPECT_EQ( dateString, refDate );
-  EXPECT_TRUE( false ) << "dateString: "+dateString;
-  */
+  int64_t subsec = (ts - static_cast <int64_t> (ts)) *1e6;
+  std::string substring = std::to_string(subsec);
+
+
+  dateString = FTTimer::convertTimestampToString( ts );
+
+  GTEST_COUT << "Substring: "<<substring<<", dateString: "<< dateString << "\n";
+  EXPECT_THAT( dateString, HasSubstr(substring));
 };
 
 int main(int argc, char **argv)
