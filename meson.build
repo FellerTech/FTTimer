@@ -12,7 +12,7 @@ fttimer_lib = static_library( 'fttimer'
   )
 
 fttimer_dep = declare_dependency(
-  include_directories : include_directories('src');
+  include_directories : include_directories('src')
   )
 
 # Build gtest
