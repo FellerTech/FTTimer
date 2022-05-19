@@ -1,0 +1,11 @@
+[wrap-git]
+direcctory = fttimer-main
+url = git@github.com:FellerTech/FTTimer.git
+revision = meson_wrap
+
+
+
+[provide]]
+fttimer_dep = fttimer_dep
+fttimer_inc = fttimer_inc
+fttimer_lib = fttimer_lib
