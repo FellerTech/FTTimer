@@ -11,6 +11,9 @@ fttimer_lib = static_library( 'fttimer'
   , include_directories : 'src' 
   )
 
+fttimer_dep = declare_dependency(
+  include_direcotires : include_directories('src');
+  )
 
 # Build gtest
 gtest_proj = subproject('gtest')
