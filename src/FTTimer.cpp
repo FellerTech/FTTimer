@@ -7,12 +7,14 @@
 #include <string>
 #include <chrono>
 #include <FTTimer.hpp>
+#include <iostream>
 #include <sstream>
+#include <iomanip>
 #include <ctime>
+#include <algorithm>
 
 #include <date.h>
 
-#include <iostream>
 
 
 namespace FTTimer
@@ -36,7 +38,7 @@ namespace FTTimer
 
   /*
   /////////////////////////////////////////////
-  // converts a tiemstamp to a duration
+  // converts a timestamp to a duration
   /////////////////////////////////////////////
   std::chrono::duration convertTimestampToDuration( double timestamp ) {
     int64_t secs = static_cast<int64_t>(timestamp);
@@ -60,27 +62,47 @@ namespace FTTimer
     using namespace date;
     ss << tp;
     return ss.str();
-    /*
-    std::time_t ttp =  system_clock::to_time_t(tp);
-
-    std::string output = std::ctime( &ttp);
-    std::string output = put_time( tp, 
-    output.pop_back();
-    return output;
-    */
-
   }
 
+  /////////////////////////////////////////////
+  // convertsa a string to a timestamp
+  /////////////////////////////////////////////
+  double convertStringToTimestamp( std::string timeString ) {
+    using namespace std;
+    using namespace std::chrono;
+    istringstream temp_ss(timeString);
+    date::sys_time<nanoseconds> tp;
+    temp_ss >> date::parse("%F %T", tp);
 
+    double duration = double(tp.time_since_epoch().count()/1.0e9);
+    return duration;
+  /*
+    std::istringstream timestamp(timeString);
 
-//    auto duration = duration_cast<std::chrono::nanoseconds>, timestamp * 1e9;
-//    auto timePoint  = std::chrono::sytem_clock::time_point<std::chrono::system_clock, std::chrono::duration> (duration);
+    tm tmb;
+    double r;
 
+    //Get fraction of seconds as separate value
+    
 
+    //Replace dashes with . for consistency
+    std::replace( timeString.begin(), timeString.end(), '-', '.');
 
+    timestamp >> std::get_time(&tmb, "%Y.%m.%d %T") >> r;
+    const auto output = std::chrono::time_point_cast<std::chrono::nanoseconds>(
+        std::chrono::system_clock::from_time_t(
+          mktime(&tmb))
+        ) + std::chrono::nanoseconds( lround(r * std::nano::den))
+        ;
 
+    uint64_t usecs = output.time_since_epoch().count();
+    double duration = double(usecs)/double(1e6);
 
+    std::cout << "timeString: "<<timeString<< " => " << duration <<std::endl;
 
+    return duration;
+  */
+  }
 
 }
 

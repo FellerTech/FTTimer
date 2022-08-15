@@ -4,17 +4,20 @@ project( 'fttimer'
   , 'cpp'
   , version : '0.0.1.-1'
   , license : 'Apache 2.0'
+  , default_options : ['c_std=c20', 'cpp_std=c++20']
   )
+
 
 fttimer_lib = static_library( 'fttimer'
   , 'src/FTTimer.cpp'
-  , include_directories : 'src' 
+  , include_directories : 'src'
   )
 
 fttimer_inc = include_directories('src')
 fttimer_dep = declare_dependency(
   include_directories : include_directories('src')
   )
+
 
 # Build gtest
 gtest_proj = subproject('gtest')
