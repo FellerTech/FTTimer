@@ -2,9 +2,9 @@
  * \brief C++ header for the FTTimer class
  * 
  * This class is used as a common wrapper to ensure a consistent way of
- * accessing system across multiple platforms and software stacks. 
+ * accessing system time across multiple platforms and software stacks. 
  * 
- * While this software attempts toe track resolution to the nanoseconds,
+ * While this software attempt toe track resolution to the nanoseconds,
  * hardware limitations can apply, so unit testing is only able to validate
  * microsecond-scale clock resolutions.
  */

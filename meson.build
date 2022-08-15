@@ -11,7 +11,7 @@ fttimer_lib = static_library( 'fttimer'
   , include_directories : 'src' 
   )
 
-fttimer_inc = include_directories('src');
+fttimer_inc = include_directories('src')
 fttimer_dep = declare_dependency(
   include_directories : include_directories('src')
   )
