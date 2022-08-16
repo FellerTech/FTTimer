@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   workflow_dispatch:
-  push:
+    #  push:
     #    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
@@ -17,18 +17,10 @@ jobs:
       - run: echo "job triggered by a ${{ github.event_name }} event."
       - name: checkout
         uses: actions/checkout@v3
-          #      - name: Setup node
-        #        uses: action/setup-node@v3 
-          #        with:
-          #    node-version
 
+      #Install dependencies
       - run: pip install meson ninja
+
+      #Setup, build, and run unit tests
       - run: meson setup builddir/
       - run: meson test -C builddir/
-#      - uses: actions/upload-artifact@v1
-#
-#      if: failure()
-#        with:
-#           name: Linux_Testlog
-#           path: builddir/meson-logs/testlog.txt
-#
