@@ -5,32 +5,22 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
+    #  push:
+    #    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "job triggered by a ${{ github.event_name }} event."
       - name: checkout
         uses: actions/checkout@v3
-      - name: Setup node
-        uses: action/setup-node@v3
-        with:
-          node-version
 
+      #Install dependencies
       - run: pip install meson ninja
+
+      #Setup, build, and run unit tests
       - run: meson setup builddir/
-      - run: meson test -c builddir/
-      - uses: actions/upload-artifact@v1
-
-      if: failure()
-        with:
-           name: Linux_Testlog
-           path: builddir/meson-logs/testlog.txt
-
+      - run: meson test -C builddir/
