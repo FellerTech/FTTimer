@@ -24,7 +24,7 @@ jobs:
 
       - run: pip install meson ninja
       - run: meson setup builddir/
-      - run: meson test -c builddir/
+      - run: meson test -C builddir/
 #      - uses: actions/upload-artifact@v1
 #
 #      if: failure()
