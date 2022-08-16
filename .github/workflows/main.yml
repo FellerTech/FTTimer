@@ -15,20 +15,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "job triggered by a ${{ github.event_name }} event."
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: Setup node
-        uses: action/setup-node@v3
-        with:
-          node-version
-
-      - run: pip install meson ninja
-      - run: meson setup builddir/
-      - run: meson test -c builddir/
-      - uses: actions/upload-artifact@v1
-
-      if: failure()
-        with:
-           name: Linux_Testlog
-           path: builddir/meson-logs/testlog.txt
-
+#      - name: checkout
+#        uses: actions/checkout@v3
+#      - name: Setup node
+#        uses: action/setup-node@v3
+#        with:
+#          node-version
+#
+#      - run: pip install meson ninja
+#      - run: meson setup builddir/
+#      - run: meson test -c builddir/
+#      - uses: actions/upload-artifact@v1
+#
+#      if: failure()
+#        with:
+#           name: Linux_Testlog
+#           path: builddir/meson-logs/testlog.txt
+#
