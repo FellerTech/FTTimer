@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "job triggered by a ${{ github.event_name }} event."
-#      - name: checkout
-#        uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v3
 #      - name: Setup node
 #        uses: action/setup-node@v3
 #        with:
