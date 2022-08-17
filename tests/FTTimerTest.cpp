@@ -44,6 +44,25 @@ double timeDelay( double delay) {
 };
 
 /////////////////////////////////////////////
+// Verify that a version is received
+/////////////////////////////////////////////
+TEST( FTTimerTest, Version ) {
+  std::string version = FTTimer::getVersion();
+
+  int expected = 3;
+  int dots = std::count(
+      version.begin()
+      , version.end()
+      , '.'
+      );
+
+  EXPECT_EQ( dots, expected) << " Expected value "
+    << expected <<", format xxx.xxx.xxx.xxx\n"
+    ;
+
+}
+
+/////////////////////////////////////////////
 // Test timer accuracy
 /////////////////////////////////////////////
 TEST( FTTimerTest, Accuracy ) {

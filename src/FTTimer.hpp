@@ -20,6 +20,11 @@
 namespace FTTimer
 {
   /**
+   * \brief returns the library version 
+   **/
+  std::string getVersion();  
+
+  /**
    * \brief function that returns the current time as a double
    */
   double getTimestamp();
@@ -39,7 +44,9 @@ namespace FTTimer
   */
 
   /**
-   * \brief converts the time to a stirng
+   * \brief converts the time to a string
+   * \param [in] timestamp timestamp t convert
+   * \return string representing the timestamp as YYYY-DD-MM HH:MM:SS.xxxxx
   */
   std::string convertTimestampToString( double timestamp );
 

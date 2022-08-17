@@ -19,6 +19,16 @@
 
 namespace FTTimer
 {
+  std::string version = BUILD_VERSION;
+
+
+  /////////////////////////////////////////////
+  // returns the timestamp
+  /////////////////////////////////////////////
+  std::string getVersion() {
+    return version;
+  }
+
   
   /////////////////////////////////////////////
   // returns current time in milliseconds
