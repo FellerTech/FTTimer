@@ -16,7 +16,6 @@
 #include <date.h>
 
 
-
 namespace FTTimer
 {
   std::string version = BUILD_VERSION;

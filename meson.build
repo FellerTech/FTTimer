@@ -15,9 +15,12 @@ tag = '0.0.1'
 #version = run_command(['echo', '`git branch', '--show-current`.`git', 'rev-parse', '--short HEAD`'])
 version=tag + '_' + branch.stdout().strip() + '.' + commit.stdout()
 version = version.strip()
+devenv = environment()
 
+devenv.set('BUILD_VERSION', version )
+devenv.set('DOCUMENTATION_DIR', meson.current_build_dir()+'/docs')
 message('BUILD_VERSION: '+version)
-
+message('DOCUMENTATION_DIR: '+ meson.current_build_dir()+'/docs')
 
 #Define library build information
 fttimer_lib = static_library( 'fttimer'
@@ -51,8 +54,38 @@ test( 'gtest tests', tests )
 #Build Doxygen
 doxygen = find_program('doxygen', required : false )
 if doxygen.found()
-  message('Generating Documentation')
-  run_target('docs', command : [ doxygen, meson.source_root() + '/Doxyfile'])
+  doc_dest=meson.current_build_dir().strip()+'/docs'
+  message('Generating Documentation at '+doc_dest)
+
+  #Set build variables
+  cdata= {'BUILD_VERSION':version
+    , 'DOCUMENTATION_DIR': doc_dest
+    , 'INPUT': meson.current_source_dir()
+    , 'EXCLUDE': 'subprojects test'
+    , 'EXCLUDE_PATTERN':'*test*'
+    }
+#  cdata.set('BUILD_VERSION', version)
+#  cdata.set('DOCUMENTATION_DIR', doc_dest)
+
+  doxyfile = configure_file( input: 'Doxyfile.in'
+    , output: 'Doxyfile'
+    , configuration: cdata
+    , install: true
+    , install_dir: meson.current_build_dir()
+    )
+  
+  #  message('Doxyfile: '+ doxyfile)
+  dfile=meson.current_build_dir()+'/Doxyfile'
+  
+  #Specify input directory
+  input = meson.current_source_dir()
+
+  message('DFILE: '+dfile)
+
+  run_target('docs'
+    , command : [ doxygen, dfile]
+    #    , env : {'BUILD_VERSION':version ,'DOCUMENTATION_DIR':doc_dest}
+    )
 else
   warning('Documentation disabled without doxygen')
 endif
