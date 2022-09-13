@@ -34,7 +34,7 @@ namespace FTTimer
   /////////////////////////////////////////////
   double getTimestamp() {
     std::chrono::time_point<std::chrono::system_clock> now = 
-    std::chrono::system_clock::now();
+        std::chrono::system_clock::now();
 
     auto dur = now.time_since_epoch();
     auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
@@ -43,6 +43,7 @@ namespace FTTimer
 
     return usecs;
   }
+
 
 
   /*
@@ -85,33 +86,9 @@ namespace FTTimer
 
     double duration = double(tp.time_since_epoch().count()/1.0e9);
     return duration;
-  /*
-    std::istringstream timestamp(timeString);
-
-    tm tmb;
-    double r;
-
-    //Get fraction of seconds as separate value
-    
-
-    //Replace dashes with . for consistency
-    std::replace( timeString.begin(), timeString.end(), '-', '.');
-
-    timestamp >> std::get_time(&tmb, "%Y.%m.%d %T") >> r;
-    const auto output = std::chrono::time_point_cast<std::chrono::nanoseconds>(
-        std::chrono::system_clock::from_time_t(
-          mktime(&tmb))
-        ) + std::chrono::nanoseconds( lround(r * std::nano::den))
-        ;
-
-    uint64_t usecs = output.time_since_epoch().count();
-    double duration = double(usecs)/double(1e6);
-
-    std::cout << "timeString: "<<timeString<< " => " << duration <<std::endl;
-
-    return duration;
-  */
   }
+
+
 
 }
 

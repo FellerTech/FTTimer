@@ -51,3 +51,14 @@ environment using the following command:
 
 * meson test -C <builddir>
 
+## Documentation
+The software documentation is auto generated using doxygen. By default the
+docuemtnation is generated in the docs subfolder of the build directory. The
+following command is used to generate the documentation:
+
+* meson compile docs -C ../build/FTTimer/
+
+# Coding standards
+In general, files are intended to be consistent with teh google c++ style guide
+at https://google.github.io/styleguide/cppguide.html#Header_Files. 
+

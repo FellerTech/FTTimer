@@ -1,18 +1,23 @@
-#https://github.com/tiernemi/meson-sample-project/blob/master/meson.build
-
+#############################################
+# FTTimer meson build file
+#############################################
+# References:
+# - https://github.com/tiernemi/meson-sample-project/blob/master/meson.build
+#############################################
 project( 'fttimer'
   , 'cpp'
   , version: '0.0.1'
   , license : 'Apache 2.0'
-  , default_options : ['c_std=c20', 'cpp_std=c++20']
+  #  , default_options : ['c_std=c20', 'cpp_std=c++20']
+    , default_options : ['c_std=c11', 'cpp_std=c++11']
   )
 
-#Extract git information
+#Extract git information for build versioning
 branch = run_command(['git', 'branch', '--show-current', '|tr','\'\n\'', '\'\''])
 hash = run_command(['git', 'rev-parse', '--short', 'HEAD'])
 commit=run_command(['git', 'rev-list', '--count', 'HEAD'])
 tag = '0.0.1'
-#version = run_command(['echo', '`git branch', '--show-current`.`git', 'rev-parse', '--short HEAD`'])
+
 version=tag + '_' + branch.stdout().strip() + '.' + commit.stdout()
 version = version.strip()
 devenv = environment()
@@ -22,11 +27,31 @@ devenv.set('DOCUMENTATION_DIR', meson.current_build_dir()+'/docs')
 message('BUILD_VERSION: '+version)
 message('DOCUMENTATION_DIR: '+ meson.current_build_dir()+'/docs')
 
+
+#############################################
+# Make hourglass suproject
+#############################################
+hrgls_cmake = import('cmake')
+hrgls_proj = hrgls_cmake.subproject('Hourglass'
+  #  , hrgls_cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
+    , cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
+  )
+#hrgls_dep = hrgls_proj.get_variable('cm_hrgls_dep')
+hrgls_lib = hrgls_proj.dependency('hrgls')
+
+hrgls_includes = [ 'subprojects/Hourglass',
+  'subprojects/Hourglass/__CMake_build/' 
+  ]
+
+
+#############################################
 #Define library build information
+#############################################
 fttimer_lib = static_library( 'fttimer'
-  , 'src/FTTimer.cpp'
+  , ['src/FTTimer.cpp', 'src/FTTimeTracker.cpp']
   , include_directories : 'src'
   , cpp_args : '-DBUILD_VERSION="'+version+'"'
+  , dependencies : hrgls_lib
   )
 
 fttimer_inc = include_directories('src')

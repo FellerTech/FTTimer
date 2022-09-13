@@ -16,6 +16,7 @@
  * For most date applications, a timestamp of 0 is set to
  * 1970-01-01 00:00:00.000000000.
  */
+#include <string>
 
 namespace FTTimer
 {
@@ -25,7 +26,7 @@ namespace FTTimer
   std::string getVersion();  
 
   /**
-   * \brief function that returns the current time as a double
+   el \brief function that returns the current time as a double
    */
   double getTimestamp();
 
@@ -49,5 +50,45 @@ namespace FTTimer
    * \return string representing the timestamp as YYYY-DD-MM HH:MM:SS.xxxxx
   */
   std::string convertTimestampToString( double timestamp );
+
+  /**
+   * \brief class that tracks timing inforamtion
+   **/
+  class Timer {
+    public:
+  
+      /**
+       * \brief function that starts/continues a timer
+       **/
+      bool start();
+  
+      /**
+       * \brief function that stops a timer
+       * \return true on success, false on failure
+       *
+       * This function will set the running flag to true and record the new
+       * start time. 
+       **/
+      bool stop();
+  
+      /**
+       * \brief function that resets a timer
+       **/
+      bool reset();
+  
+      /**
+       * \brief function that 
+       **/
+      int lap();
+  
+      /**
+       * \brief function to indicate if stopwatch is running
+       * \return true of running, false if not running
+       *
+       * Running indicates that the last time entry was at the start of a timing
+       * interval.
+       */
+      bool isRunning(); 
+  }
 
 }
