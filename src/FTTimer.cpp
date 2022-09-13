@@ -15,11 +15,11 @@
 
 #include <date.h>
 
+#include<vector>
 
 namespace FTTimer
 {
   std::string version = BUILD_VERSION;
-
 
   /////////////////////////////////////////////
   // returns the timestamp
@@ -28,11 +28,10 @@ namespace FTTimer
     return version;
   }
 
-  
   /////////////////////////////////////////////
-  // returns current time in milliseconds
+  // returns current time in nanoseconds 
   /////////////////////////////////////////////
-  double getTimestamp() {
+  double getNsecTimestamp() {
     std::chrono::time_point<std::chrono::system_clock> now = 
         std::chrono::system_clock::now();
 
@@ -44,6 +43,20 @@ namespace FTTimer
     return usecs;
   }
 
+  /////////////////////////////////////////////
+  // returns current time in milliseconds
+  /////////////////////////////////////////////
+  double getTimestamp() {
+    std::chrono::time_point<std::chrono::system_clock> now = 
+        std::chrono::system_clock::now();
+
+    auto dur = now.time_since_epoch();
+    auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
+
+    double usecs = static_cast<double>(tics)/ 1e6;
+
+    return usecs;
+  }
 
 
   /*
@@ -88,7 +101,70 @@ namespace FTTimer
     return duration;
   }
 
+  //////////////////////////////////////////////////////////// 
+  // Stopwatch class functions
+  //////////////////////////////////////////////////////////// 
+  bool Stopwatch::isRunning() {
+    if(start_ != 0 ) {
+      return true;
+    }
 
+    return false;
+  }
 
+  //start the lap/new lap
+  bool Stopwatch::start() {
+    double now = getNsecTimestamp();
+
+    //If not running, return false
+    if( start_ != 0 ) {
+      return false;
+    }
+
+    start_ = now;
+    return true;
+  }
+
+  //Stops the clock
+  double Stopwatch::stop() {
+    double now = getNsecTimestamp();
+    if(start_ == 0 ) {
+      return -1.0; 
+    }
+
+    elapsed_    = elapsed_    + now;
+    lapElapsed_ = lapElapsed_ + now;
+    start_ = 0;
+
+    return elapsed_;
+  }
+
+  //Resets the clock
+  bool Stopwatch::reset() {
+    start_       = 0;
+    elapsed_     = 0;
+    lapElapsed_ = 0;
+
+    laps_.clear();
+
+    return true;
+  }
+
+  //Records a lap
+  double Stopwatch::lap() {
+    double now = getNsecTimestamp();
+
+    if( start_ == 0 ) {
+      return -1.0;
+    }
+
+    elapsed_ = elapsed_ + now - start_;
+    lapElapsed_ = lapElapsed_ + now - start_;
+    laps_.push_back(lapElapsed_);
+
+    start_ = now;
+
+    return lapElapsed_;
+  }
 }
 

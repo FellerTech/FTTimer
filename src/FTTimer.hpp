@@ -17,16 +17,25 @@
  * 1970-01-01 00:00:00.000000000.
  */
 #include <string>
+#include <vector>
 
 namespace FTTimer
 {
+  /**
+   * \brief structure for a lap returned from stopwatch
+   **/
+  struct StopwatchLap {
+    int64_t index;                          //! Lap index or number
+    double  duration;                       //! Duration of the lap
+  };
+
   /**
    * \brief returns the library version 
    **/
   std::string getVersion();  
 
   /**
-   el \brief function that returns the current time as a double
+   * \brief function that returns the current time as a double
    */
   double getTimestamp();
 
@@ -54,41 +63,58 @@ namespace FTTimer
   /**
    * \brief class that tracks timing inforamtion
    **/
-  class Timer {
+  class Stopwatch {
     public:
-  
+      /**
+       * \brief function to indicate if stopwatch is running
+       * \return true if running, false if not running
+       *
+       * Running indicates that the last time entry was at the start of a timing
+       * interval.
+       */
+      bool isRunning();
+
       /**
        * \brief function that starts/continues a timer
+       * \return true if clock starts, false if it is already running 
+       *
+       * The start function will start tracking
        **/
       bool start();
   
       /**
        * \brief function that stops a timer
-       * \return true on success, false on failure
+       * \return elapsed time on success, a negative value on failure
        *
        * This function will set the running flag to true and record the new
        * start time. 
        **/
-      bool stop();
+      double stop();
   
       /**
        * \brief function that resets a timer
+       * \return true on success, false on failure
+       *
+       * This function clears all times and removes and laps.
        **/
       bool reset();
   
       /**
-       * \brief function that 
-       **/
-      int lap();
-  
-      /**
-       * \brief function to indicate if stopwatch is running
-       * \return true of running, false if not running
+       * \brief function that adds a lap marker
+       * \return returns the lap duration on success or 0 on failure
        *
-       * Running indicates that the last time entry was at the start of a timing
-       * interval.
-       */
-      bool isRunning(); 
-  }
+       * The lap duration is how long since the last lap. If the function is
+       * called while stopped, -1.0 is returned. 
+       **/
+      double lap();
+  
+    private: 
+      double start_      = 0;               //! start of current segment
+      double elapsed_    = 0;               //! total elapsed time
+      double lapElapsed_ = 0;               //! elapsed lap time
+      
+      std::vector<double> laps_;            //! vector of recorded laps
+      
+  };
 
 }

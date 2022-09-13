@@ -48,7 +48,8 @@ hrgls_includes = [ 'subprojects/Hourglass',
 #Define library build information
 #############################################
 fttimer_lib = static_library( 'fttimer'
-  , ['src/FTTimer.cpp', 'src/FTTimeTracker.cpp']
+  #  , ['src/FTTimer.cpp', 'src/FTTimeTracker.cpp']
+    , ['src/FTTimer.cpp']
   , include_directories : 'src'
   , cpp_args : '-DBUILD_VERSION="'+version+'"'
   , dependencies : hrgls_lib
