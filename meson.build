@@ -28,20 +28,20 @@ message('BUILD_VERSION: '+version)
 message('DOCUMENTATION_DIR: '+ meson.current_build_dir()+'/docs')
 
 
-#############################################
-# Make hourglass suproject
-#############################################
-hrgls_cmake = import('cmake')
-hrgls_proj = hrgls_cmake.subproject('Hourglass'
-  #  , hrgls_cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
-    , cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
-  )
-#hrgls_dep = hrgls_proj.get_variable('cm_hrgls_dep')
-hrgls_lib = hrgls_proj.dependency('hrgls')
-
-hrgls_includes = [ 'subprojects/Hourglass',
-  'subprojects/Hourglass/__CMake_build/' 
-  ]
+##############################################
+## Make hourglass suproject
+##############################################
+#hrgls_cmake = import('cmake')
+#hrgls_proj = hrgls_cmake.subproject('Hourglass'
+#  #  , hrgls_cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
+#    , cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
+#  )
+##hrgls_dep = hrgls_proj.get_variable('cm_hrgls_dep')
+#hrgls_lib = hrgls_proj.dependency('hrgls')
+#
+#hrgls_includes = [ 'subprojects/Hourglass',
+#  'subprojects/Hourglass/__CMake_build/' 
+#  ]
 
 
 #############################################
@@ -52,7 +52,7 @@ fttimer_lib = static_library( 'fttimer'
     , ['src/FTTimer.cpp']
   , include_directories : 'src'
   , cpp_args : '-DBUILD_VERSION="'+version+'"'
-  , dependencies : hrgls_lib
+  #  , dependencies : hrgls_lib
   )
 
 fttimer_inc = include_directories('src')
