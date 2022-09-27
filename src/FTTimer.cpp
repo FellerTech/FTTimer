@@ -29,21 +29,6 @@ namespace FTTimer
   }
 
   /////////////////////////////////////////////
-  // returns current time in nanoseconds 
-  /////////////////////////////////////////////
-  double getNsecTimestamp() {
-    std::chrono::time_point<std::chrono::system_clock> now = 
-        std::chrono::system_clock::now();
-
-    auto dur = now.time_since_epoch();
-    auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
-
-    double usecs = static_cast<double>(tics)/ 1e9;
-
-    return usecs;
-  }
-
-  /////////////////////////////////////////////
   // returns current time in milliseconds
   /////////////////////////////////////////////
   double getTimestamp() {
@@ -51,7 +36,7 @@ namespace FTTimer
         std::chrono::system_clock::now();
 
     auto dur = now.time_since_epoch();
-    auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
+    auto tics = std::chrono::duration_cast<std::chrono::microseconds>(dur).count();
 
     double usecs = static_cast<double>(tics)/ 1e6;
 
@@ -104,46 +89,93 @@ namespace FTTimer
   //////////////////////////////////////////////////////////// 
   // Stopwatch class functions
   //////////////////////////////////////////////////////////// 
-  bool Stopwatch::isRunning() {
-    if(start_ != 0 ) {
-      return true;
+  Stopwatch::Stopwatch() {
+    reset();
+  }
+
+  /////////////////////////////////////////////
+  // returns current time in nanoseconds 
+  /////////////////////////////////////////////
+  std::chrono::time_point<std::chrono::steady_clock> Stopwatch::getTimePoint() {
+    std::chrono::time_point<std::chrono::steady_clock> now = 
+        std::chrono::steady_clock::now();
+
+//    auto dur = now.time_since_epoch();
+//    auto tics = std::chrono::duration_cast<std::chrono::nanoseconds>(dur).count();
+
+//    double nsecs = static_cast<double>(tics)/ 1.0e9;
+//    double nsecs = now;
+//    std::cout << "NOW: "<<now<<std::endl;
+
+    return now;
+  }
+
+  
+  /////////////////////////////////////////////
+  // sets the reference time
+  /////////////////////////////////////////////
+  bool Stopwatch::setTimePoint() {
+    if( running_ ) {
+      return false;
     }
 
-    return false;
+    start_ = getTimePoint();
+    return true;
+  }
+
+  /////////////////////////////////////////////
+  // calculates offset
+  /////////////////////////////////////////////
+  double Stopwatch::getTimeOffset() {
+    auto now = getTimePoint();
+
+//    std::chrono::duration<double> diff = now - start_;
+    auto diff = std::chrono::duration_cast<std::chrono::nanoseconds>(now-start_);
+    /*
+    elapsed_    = elapsed_ + static_cast<double>(diff);
+    lapElapsed_ = lapElapsed_ + static_cast<double>(diff);
+    laps_.push_back(lapElapsed_);
+    */
+    return  diff.count()/1e9;
+  }
+
+
+  //Check if thec clock is running
+  bool Stopwatch::isRunning() {
+    return running_;
   }
 
   //start the lap/new lap
   bool Stopwatch::start() {
-    double now = getNsecTimestamp();
 
-    //If not running, return false
-    if( start_ != 0 ) {
-      return false;
+    bool rc = setTimePoint();
+    if( rc ) {
+      running_ = true;
     }
 
-    start_ = now;
-    return true;
+    return rc;
   }
 
   //Stops the clock
   double Stopwatch::stop() {
-    double now = getNsecTimestamp();
-    if(start_ == 0 ) {
-      return -1.0; 
+    if( !running_ ) {
+      return -1.0;
     }
 
-    elapsed_    = elapsed_    + now;
-    lapElapsed_ = lapElapsed_ + now;
-    start_ = 0;
+    double interval = getTimeOffset();
+
+    elapsed_    = elapsed_    + interval;
+    lapElapsed_ = lapElapsed_ + interval;
+    running_ = false;
 
     return elapsed_;
   }
 
   //Resets the clock
   bool Stopwatch::reset() {
-    start_       = 0;
+    running_     = false;
     elapsed_     = 0;
-    lapElapsed_ = 0;
+    lapElapsed_  = 0;
 
     laps_.clear();
 
@@ -152,19 +184,25 @@ namespace FTTimer
 
   //Records a lap
   double Stopwatch::lap() {
-    double now = getNsecTimestamp();
 
-    if( start_ == 0 ) {
+    if( !running_ ) {
       return -1.0;
     }
+    
+    double interval = getTimeOffset();
 
-    elapsed_ = elapsed_ + now - start_;
-    lapElapsed_ = lapElapsed_ + now - start_;
+    elapsed_    = elapsed_ + interval;
+    lapElapsed_ = lapElapsed_ + interval;
     laps_.push_back(lapElapsed_);
 
-    start_ = now;
+    setTimePoint();
 
     return lapElapsed_;
+  }
+
+  //Returns current elapsed time without changing running state
+  double Stopwatch::getElapsed() {
+    return elapsed_;
   }
 }
 

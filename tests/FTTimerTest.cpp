@@ -27,6 +27,7 @@ double timeDelay( double delay) {
 
   double end = FTTimer::getTimestamp();
 
+  std::cout << "Start: "<<start<<",end: "<<end<<std::endl;
   return (end-start);
 }
 
@@ -65,10 +66,12 @@ TEST( FTTimerTest, Version ) {
 /////////////////////////////////////////////
 // Test timer accuracy
 /////////////////////////////////////////////
-TEST( FTTimerTest, Accuracy ) {
+TEST( FTTimerTest, TestDelayAccuracy ) {
   double range = 0.0003;
   double delay = 2;
   double result = timeDelay(delay);
+
+  std::cout << "RESULT: "<<result<<std::endl;
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
 
@@ -116,6 +119,28 @@ TEST( FTTimerTest, StringToTimestamp ) {
   UTCString = "1970-01-01 00:00:00.000000001";
   ts        =  FTTimer::convertStringToTimestamp( UTCString );
   EXPECT_EQ( ts, 1e-9 ) << "UTCString " << UTCString << " != 1E-9"; 
+}
+
+/////////////////////////////////////////////
+// Test start/stop functinoality
+////////////////////////////////////////////
+TEST( FTTimerTest, StartStop ) {
+  double range = 0.0003;
+  double delay = 2;
+
+  FTTimer::Stopwatch sw;
+
+  sw.start();
+  timeDelay(delay);
+  double result = sw.stop();
+  double elapsed = sw.getElapsed();
+
+  EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
+    << " Timing Accuracy test";
+
+  EXPECT_EQ(result, elapsed) << "stopped/elapsed mismatch (" 
+    << result - elapsed << ")";
+
 }
 
 /////////////////////////////////////////////

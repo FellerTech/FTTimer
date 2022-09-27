@@ -66,6 +66,12 @@ namespace FTTimer
   class Stopwatch {
     public:
       /**
+       * \brief constructor
+       **/
+      Stopwatch(); 
+
+
+      /**
        * \brief function to indicate if stopwatch is running
        * \return true if running, false if not running
        *
@@ -98,6 +104,12 @@ namespace FTTimer
        * This function clears all times and removes and laps.
        **/
       bool reset();
+
+      /**
+       * \brief get elapsed time without changing clock state
+       * \return stopwatch time
+       **/
+      double getElapsed();
   
       /**
        * \brief function that adds a lap marker
@@ -109,12 +121,29 @@ namespace FTTimer
       double lap();
   
     private: 
-      double start_      = 0;               //! start of current segment
+      //reference timepoint
+      std::chrono::time_point<std::chrono::steady_clock> start_{};
+
+      bool   running_    = false;           //! flag to indicate if running
       double elapsed_    = 0;               //! total elapsed time
       double lapElapsed_ = 0;               //! elapsed lap time
       
       std::vector<double> laps_;            //! vector of recorded laps
-      
+ 
+      /**
+       * \brief returns an internal timepoint value
+       **/
+      std::chrono::time_point<std::chrono::steady_clock> getTimePoint();
+
+      /**
+       * \brief sets the reference time
+       **/
+      bool setTimePoint();
+
+      /**
+       * \brief returns the offset between the set time and current iem
+       **/
+      double getTimeOffset();
   };
 
 }
