@@ -115,10 +115,6 @@ namespace FTTimer
   // sets the reference time
   /////////////////////////////////////////////
   bool Stopwatch::setTimePoint() {
-    if( running_ ) {
-      return false;
-    }
-
     start_ = getTimePoint();
     return true;
   }
@@ -147,12 +143,14 @@ namespace FTTimer
 
   //start the lap/new lap
   bool Stopwatch::start() {
+    if( running_ ) {
+      return false;
+    }
 
     bool rc = setTimePoint();
     if( rc ) {
       running_ = true;
     }
-
     return rc;
   }
 
@@ -202,7 +200,12 @@ namespace FTTimer
 
   //Returns current elapsed time without changing running state
   double Stopwatch::getElapsed() {
-    return elapsed_;
+    double interval = 0.0;
+    if( running_ ) {
+        interval = getTimeOffset();
+    }
+
+    return elapsed_ + interval;
   }
 }
 

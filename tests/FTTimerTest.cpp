@@ -27,7 +27,6 @@ double timeDelay( double delay) {
 
   double end = FTTimer::getTimestamp();
 
-  std::cout << "Start: "<<start<<",end: "<<end<<std::endl;
   return (end-start);
 }
 
@@ -71,7 +70,6 @@ TEST( FTTimerTest, TestDelayAccuracy ) {
   double delay = 2;
   double result = timeDelay(delay);
 
-  std::cout << "RESULT: "<<result<<std::endl;
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
 
@@ -130,9 +128,16 @@ TEST( FTTimerTest, StartStop ) {
 
   FTTimer::Stopwatch sw;
 
+  //Make sure time is greather than 0
+  sw.start();
+  double result = sw.stop();
+  EXPECT_GT( result, 0.0);
+  sw.reset();
+
+  //Make sure time is within range
   sw.start();
   timeDelay(delay);
-  double result = sw.stop();
+  result = sw.stop();
   double elapsed = sw.getElapsed();
 
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
@@ -140,7 +145,6 @@ TEST( FTTimerTest, StartStop ) {
 
   EXPECT_EQ(result, elapsed) << "stopped/elapsed mismatch (" 
     << result - elapsed << ")";
-
 }
 
 /////////////////////////////////////////////
