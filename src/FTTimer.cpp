@@ -198,6 +198,10 @@ namespace FTTimer
     return lapElapsed_;
   }
 
+  std::vector<double> Stopwatch::getLaps() {
+    return laps_;
+  }
+
   //Returns current elapsed time without changing running state
   double Stopwatch::getElapsed() {
     double interval = 0.0;

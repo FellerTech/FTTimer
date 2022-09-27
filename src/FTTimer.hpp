@@ -119,6 +119,11 @@ namespace FTTimer
        * called while stopped, -1.0 is returned. 
        **/
       double lap();
+
+      /**
+       * \brief returns a vector of recorded lapss
+       **/
+      std::vector<double> getLaps();
   
     private: 
       //reference timepoint

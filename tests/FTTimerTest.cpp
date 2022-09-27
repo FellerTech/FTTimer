@@ -122,7 +122,7 @@ TEST( FTTimerTest, StringToTimestamp ) {
 /////////////////////////////////////////////
 // Test start/stop functinoality
 ////////////////////////////////////////////
-TEST( FTTimerTest, StartStop ) {
+TEST( Stopwatch, StartStop ) {
   double range = 0.0003;
   double delay = 2;
 
@@ -160,6 +160,56 @@ TEST( FTTimerTest, StartStop ) {
 /////////////////////////////////////////////
 // Test lap functionality
 /////////////////////////////////////////////
+TEST( Stopwatch, Lap ) {
+  FTTimer::Stopwatch sw;
+
+  //Verify no laps before we wbeing
+  std::vector<double> laps = sw.getLaps();
+  EXPECT_EQ( laps.size(), 0 ) << "lap size != 0 on initiation";
+
+  //Make sure no laps before lap function call
+  sw.start();
+  laps = sw.getLaps();
+  EXPECT_EQ( laps.size(), 0 ) << "lap size != 0 before lap is set";
+  sw.reset();
+
+  //Check single lap
+  sw.start();
+  double lap1 = sw.lap();
+  laps = sw.getLaps();
+
+  EXPECT_EQ( lap1, laps[0]) << "delay != lap value";
+  sw.reset();
+
+  //Check multipe laps
+  int total = 100.0;
+  double interval = 0.05;
+  double range = interval/2.0;
+  std::vector<double> refLaps;
+
+  sw.start();
+  for( int i = 0; i < total; i++) {
+    timeDelay(interval);
+    lap1 = sw.lap();
+
+    refLaps.push_back(lap1);
+  }
+  sw.stop();
+
+  laps =sw.getLaps();
+
+  //Compare all elements
+  for( int i = 0; i < total; i++ ) {
+    EXPECT_EQ( laps[i], refLaps[i] ) << "laps not equal at index "<<i;
+  }
+
+  //Make sure average time is close
+  double avg = (laps.back() - laps[0]) / total;
+  EXPECT_TRUE( IsBetweenInclusive( avg, interval - range, interval + range )) ;
+
+
+
+}
 
 
 /////////////////////////////////////////////
