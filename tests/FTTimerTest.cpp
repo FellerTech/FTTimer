@@ -98,7 +98,7 @@ TEST( FTTimerTest, TimestampToString ) {
 
   //Test vs. current time
   double ts = FTTimer::getTimestamp();
-  int64_t subsec = (ts - static_cast <int64_t> (ts)) *1e6;
+  int64_t subsec = (ts - static_cast <int64_t> (ts)) *1e5;
   std::string substring = std::to_string(subsec);
 
   dateString = FTTimer::convertTimestampToString( ts );
@@ -128,17 +128,27 @@ TEST( FTTimerTest, StartStop ) {
 
   FTTimer::Stopwatch sw;
 
+  //Make sure that elapsed time is 0 before start
+  double elapsed = sw.getElapsed();
+  EXPECT_EQ( elapsed, 0 ) << "Time before start should be 0";
+
   //Make sure time is greather than 0
   sw.start();
   double result = sw.stop();
+  GTEST_COUT << "Min delay:"<< result<< " seconds.\n";
   EXPECT_GT( result, 0.0);
+  EXPECT_LT( result, 1e-6 ) << "Execution time should be less than 1 usec";
   sw.reset();
+
+  //Make sure that elapsed time is 0 after reset
+  elapsed = sw.getElapsed();
+  EXPECT_EQ( elapsed, 0 ) << "Time should be 0 after reset";
 
   //Make sure time is within range
   sw.start();
   timeDelay(delay);
   result = sw.stop();
-  double elapsed = sw.getElapsed();
+  elapsed = sw.getElapsed();
 
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
@@ -146,6 +156,11 @@ TEST( FTTimerTest, StartStop ) {
   EXPECT_EQ(result, elapsed) << "stopped/elapsed mismatch (" 
     << result - elapsed << ")";
 }
+
+/////////////////////////////////////////////
+// Test lap functionality
+/////////////////////////////////////////////
+
 
 /////////////////////////////////////////////
 // Main function
