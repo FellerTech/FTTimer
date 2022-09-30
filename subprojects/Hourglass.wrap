@@ -1,0 +1,4 @@
+[wrap-git]
+directory = hourglass.git
+url = https://github.com/ReliaSolve/Hourglass.git
+revision = any

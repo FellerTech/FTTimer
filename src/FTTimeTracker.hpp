@@ -1,4 +1,5 @@
-/**
+/*e
+
  * \brief C++ header for the FellerTech Timer class
  */
 #include <chrono>
@@ -9,14 +10,6 @@
 
 namespace FTTimer
 {
-  /**
-   * \brief function that returns the current time.
-   */
-  double getTime();
-    //auto now = std::chrono::system_clock::now();
-    //auto duration = now.time_since_epoch();
-    //auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
-
   /**
    * \brief class representing a single timer instance
    * 

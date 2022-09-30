@@ -65,10 +65,11 @@ TEST( FTTimerTest, Version ) {
 /////////////////////////////////////////////
 // Test timer accuracy
 /////////////////////////////////////////////
-TEST( FTTimerTest, Accuracy ) {
+TEST( FTTimerTest, TestDelayAccuracy ) {
   double range = 0.0003;
   double delay = 2;
   double result = timeDelay(delay);
+
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
 
@@ -97,7 +98,7 @@ TEST( FTTimerTest, TimestampToString ) {
 
   //Test vs. current time
   double ts = FTTimer::getTimestamp();
-  int64_t subsec = (ts - static_cast <int64_t> (ts)) *1e6;
+  int64_t subsec = (ts - static_cast <int64_t> (ts)) *1e5;
   std::string substring = std::to_string(subsec);
 
   dateString = FTTimer::convertTimestampToString( ts );
@@ -117,6 +118,99 @@ TEST( FTTimerTest, StringToTimestamp ) {
   ts        =  FTTimer::convertStringToTimestamp( UTCString );
   EXPECT_EQ( ts, 1e-9 ) << "UTCString " << UTCString << " != 1E-9"; 
 }
+
+/////////////////////////////////////////////
+// Test start/stop functinoality
+////////////////////////////////////////////
+TEST( Stopwatch, StartStop ) {
+  double range = 0.0003;
+  double delay = 2;
+
+  FTTimer::Stopwatch sw;
+
+  //Make sure that elapsed time is 0 before start
+  double elapsed = sw.getElapsed();
+  EXPECT_EQ( elapsed, 0 ) << "Time before start should be 0";
+
+  //Make sure time is greather than 0
+  sw.start();
+  double result = sw.stop();
+  GTEST_COUT << "Min delay:"<< result<< " seconds.\n";
+  EXPECT_GT( result, 0.0);
+  EXPECT_LT( result, 1e-6 ) << "Execution time should be less than 1 usec";
+  sw.reset();
+
+  //Make sure that elapsed time is 0 after reset
+  elapsed = sw.getElapsed();
+  EXPECT_EQ( elapsed, 0 ) << "Time should be 0 after reset";
+
+  //Make sure time is within range
+  sw.start();
+  timeDelay(delay);
+  result = sw.stop();
+  elapsed = sw.getElapsed();
+
+  EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
+    << " Timing Accuracy test";
+
+  EXPECT_EQ(result, elapsed) << "stopped/elapsed mismatch (" 
+    << result - elapsed << ")";
+}
+
+/////////////////////////////////////////////
+// Test lap functionality
+/////////////////////////////////////////////
+TEST( Stopwatch, Lap ) {
+  FTTimer::Stopwatch sw;
+
+  //Verify no laps before we wbeing
+  std::vector<double> laps = sw.getLaps();
+  EXPECT_EQ( laps.size(), 0 ) << "lap size != 0 on initiation";
+
+  //Make sure no laps before lap function call
+  sw.start();
+  laps = sw.getLaps();
+  EXPECT_EQ( laps.size(), 0 ) << "lap size != 0 before lap is set";
+  sw.reset();
+
+  //Check single lap
+  sw.start();
+  double lap1 = sw.lap();
+  laps = sw.getLaps();
+
+  EXPECT_EQ( lap1, laps[0]) << "delay != lap value";
+  sw.reset();
+
+  //Check multipe laps
+  int total = 100.0;
+  double interval = 0.05;
+  double range = interval/2.0;
+  std::vector<double> refLaps;
+
+  sw.start();
+  for( int i = 0; i < total; i++) {
+    timeDelay(interval);
+    lap1 = sw.lap();
+
+    refLaps.push_back(lap1);
+  }
+  sw.stop();
+
+  laps =sw.getLaps();
+
+  //Compare all elements
+  for( int i = 0; i < total; i++ ) {
+    EXPECT_EQ( laps[i], refLaps[i] ) << "laps not equal at index "<<i;
+  }
+
+  //Make sure average time is close
+  double avg = (laps.back() - laps[0]) / total;
+  EXPECT_TRUE( IsBetweenInclusive( avg, interval - range, interval + range )) ;
+
+
+
+}
+
 
 /////////////////////////////////////////////
 // Main function
