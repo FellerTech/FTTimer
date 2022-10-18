@@ -30,6 +30,9 @@ information:
 A meson build is a multi-step process. 
 
 ## Configuration
+To setup meson to build, the following command is used to establish the build directory 
+* meson setup <builddir>
+
 Before compiling software, the directory where the bild will occur must be 
 specified using the meson --reconfigure command
 * meson --reconfigure <builddir>

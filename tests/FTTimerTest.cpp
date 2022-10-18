@@ -66,9 +66,11 @@ TEST( FTTimerTest, Version ) {
 // Test timer accuracy
 /////////////////////////////////////////////
 TEST( FTTimerTest, TestDelayAccuracy ) {
-  double range = 0.0003;
+  double range = 0.0005;
   double delay = 2;
   double result = timeDelay(delay);
+
+
 
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
