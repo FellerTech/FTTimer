@@ -22,6 +22,6 @@ jobs:
       - run: pip install meson ninja
 
       #Setup, build, and run unit tests
-      - run: meson setup builddir/
-      - run: meson compile -C builddir/
-      - run: meson test -C builddir/
+      - run: meson setup ../builddir/
+      - run: meson compile -C ../builddir/
+      - run: meson test -C ../builddir/
