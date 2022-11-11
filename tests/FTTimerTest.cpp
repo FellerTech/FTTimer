@@ -67,7 +67,8 @@ TEST( FTTimerTest, Version ) {
 // Test timer accuracy
 /////////////////////////////////////////////
 TEST( FTTimerTest, TestDelayAccuracy ) {
-  double range = 0.0005;
+//  double range = 0.0005
+  double range = 1.0;
   double delay = 2;
   double result = timeDelay(delay);
 
@@ -126,7 +127,8 @@ TEST( FTTimerTest, StringToTimestamp ) {
 // Test start/stop functinoality
 ////////////////////////////////////////////
 TEST( Stopwatch, StartStop ) {
-  double range = 0.0003;
+//  double range = 0.0003;
+  double range = 1.0;
   double delay = 2;
 
   FTTimer::Stopwatch sw;
@@ -191,7 +193,8 @@ TEST( Stopwatch, Lap ) {
   //Check multipe laps
   int total = 100.0;
   double interval = 0.1;
-  double range = interval/2.0;
+//  double range = interval/2.0;
+  double range = interval;
   std::vector<double> refLaps;
 
   GTEST_COUT << "Sleeping for "<< total << " intervals of " 
