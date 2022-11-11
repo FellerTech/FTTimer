@@ -77,8 +77,8 @@ TEST( FTTimerTest, TestDelayAccuracy ) {
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
 
-  EXPECT_FALSE( IsBetweenInclusive( result, delay - range*.1, delay +range*.1)) 
-    << " Timing sanity check";
+//  EXPECT_FALSE( IsBetweenInclusive( result, delay - range*.1, delay +range*.1)) 
+//    << " Timing sanity check";
 };
 
 /////////////////////////////////////////////
