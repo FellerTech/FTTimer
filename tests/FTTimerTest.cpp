@@ -193,8 +193,8 @@ TEST( Stopwatch, Lap ) {
   //Check multipe laps
   int total = 100.0;
   double interval = 0.1;
-//  double range = interval/2.0;
-  double range = interval;
+  double range = interval/2.0;
+//  double range = interval;
   std::vector<double> refLaps;
 
   GTEST_COUT << "Sleeping for "<< total << " intervals of " 
