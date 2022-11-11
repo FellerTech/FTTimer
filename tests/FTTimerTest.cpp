@@ -21,7 +21,6 @@ double timeDelay( double delay) {
   double start = FTTimer::getTimestamp();
   auto d = static_cast<uint64_t>(delay *1e6);
 
-  GTEST_COUT << "Sleeping for "<< delay << " seconds.\n";
 
   std::this_thread::sleep_for(std::chrono::microseconds(d));
 
@@ -37,6 +36,8 @@ double timeDelay( double delay) {
 ::testing::AssertionResult IsBetweenInclusive(double val, double a, double b)
 {
     if((val >= a) && (val <= b))
+        return ::testing::AssertionSuccess();
+    else if((val >= b) && (val <= a))
         return ::testing::AssertionSuccess();
     else
         return ::testing::AssertionFailure()
@@ -161,6 +162,10 @@ TEST( Stopwatch, StartStop ) {
 
 /////////////////////////////////////////////
 // Test lap functionality
+//
+// This function creates a stopwatch and vierfies its inital values. The 
+// stopwatch then starts multiple laps and compares the different lap times
+// to verify correctness.
 /////////////////////////////////////////////
 TEST( Stopwatch, Lap ) {
   FTTimer::Stopwatch sw;
@@ -185,32 +190,42 @@ TEST( Stopwatch, Lap ) {
 
   //Check multipe laps
   int total = 100.0;
-  double interval = 0.05;
+  double interval = 0.1;
   double range = interval/2.0;
   std::vector<double> refLaps;
+
+  GTEST_COUT << "Sleeping for "<< total << " intervals of " 
+	  << interval<< " seconds.\n";
 
   sw.start();
   for( int i = 0; i < total; i++) {
     timeDelay(interval);
     lap1 = sw.lap();
+//    GTEST_COUT << "LAP :"<<lap1<<std::endl;
 
     refLaps.push_back(lap1);
   }
-  sw.stop();
+// double end = sw.stop();
 
   laps =sw.getLaps();
 
   //Compare all elements
+  double sum = 0;
+  double avg = 0;
   for( int i = 0; i < total; i++ ) {
     EXPECT_EQ( laps[i], refLaps[i] ) << "laps not equal at index "<<i;
+    sum = sum + refLaps[i];
+    avg = avg + refLaps[i];
   }
 
-  //Make sure average time is close
-  double avg = (laps.back() - laps[0]) / total;
-  EXPECT_TRUE( IsBetweenInclusive( avg, interval - range, interval + range )) ;
+  double totalTime = total * interval;
+  avg = avg/total;
 
+  GTEST_COUT << "Total time :"<<totalTime <<", lap sum: "<<sum << std::endl;
+  EXPECT_TRUE( IsBetweenInclusive( totalTime, sum - range, sum + range));
 
-
+  //Check average lap time. Should be very close
+  EXPECT_TRUE( IsBetweenInclusive( avg, interval-0.01, interval+0.01));
 }
 
 
