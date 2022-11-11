@@ -21,13 +21,17 @@
 
 namespace FTTimer
 {
+
+
+
   /**
    * \brief structure for a lap returned from stopwatch
-   **/
+   *
   struct StopwatchLap {
     int64_t index;                          //! Lap index or number
     double  duration;                       //! Duration of the lap
   };
+  */
 
   /**
    * \brief returns the library version 
@@ -61,7 +65,7 @@ namespace FTTimer
   std::string convertTimestampToString( double timestamp );
 
   /**
-   * \brief class that tracks timing inforamtion
+   * \brief class that tracks timing information
    **/
   class Stopwatch {
     public:
@@ -69,7 +73,6 @@ namespace FTTimer
        * \brief constructor
        **/
       Stopwatch(); 
-
 
       /**
        * \brief function to indicate if stopwatch is running
@@ -82,11 +85,13 @@ namespace FTTimer
 
       /**
        * \brief function that starts/continues a timer
-       * \return true if clock starts, false if it is already running 
+       * \return elapsed time since intial start
        *
-       * The start function will start tracking
+       * This function starts a new time interval in the stopwatch. If the
+       * stopwatch is active, the elapsed time is incremented and a new 
+       * interval is started.
        **/
-      bool start();
+      double start();
   
       /**
        * \brief function that stops a timer
@@ -126,17 +131,27 @@ namespace FTTimer
       std::vector<double> getLaps();
   
     private: 
-      //reference timepoint
-      std::chrono::time_point<std::chrono::steady_clock> start_{};
+      //Time points
+      std::chrono::time_point<std::chrono::steady_clock> referenceTime_{};
 
-      bool   running_    = false;           //! flag to indicate if running
-      double elapsed_    = 0;               //! total elapsed time
-      double lapElapsed_ = 0;               //! elapsed lap time
-      
+      /*
+      std::chrono::time_point<std::chrono::steady_clock> start_{};
+      std::chrono::time_point<std::chrono::steady_clock> intervalStart_{};
+      std::chrono::time_point<std::chrono::steady_clock> lapStart_{};
+      std::chrono::time_point<std::chrono::steady_clock> end_{};
+      */
+
+      double start_         = 0;            //! time of first start
+      double intervalStart_ = 0;            //! time of first start
+      double lapStart_      = 0;            //! start of most recent lap
+      double end_           = 0;            //! time of last stop
+
+      //Accumulators
+      double elapsed_       = 0;            //! total elapsed time
       std::vector<double> laps_;            //! vector of recorded laps
  
       /**
-       * \brief returns an internal timepoint value
+       * \brief returns a timepoint as a double
        **/
       std::chrono::time_point<std::chrono::steady_clock> getTimePoint();
 
