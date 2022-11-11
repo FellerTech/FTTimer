@@ -67,8 +67,8 @@ TEST( FTTimerTest, Version ) {
 // Test timer accuracy
 /////////////////////////////////////////////
 TEST( FTTimerTest, TestDelayAccuracy ) {
-//  double range = 0.0005
-  double range = 1.0;
+  double range = 0.0005;
+//  double range = 1.0;
   double delay = 2;
   double result = timeDelay(delay);
 
@@ -77,8 +77,8 @@ TEST( FTTimerTest, TestDelayAccuracy ) {
   EXPECT_TRUE( IsBetweenInclusive( result, delay - range, delay + range )) 
     << " Timing Accuracy test";
 
-//  EXPECT_FALSE( IsBetweenInclusive( result, delay - range*.1, delay +range*.1)) 
-//    << " Timing sanity check";
+  EXPECT_FALSE( IsBetweenInclusive( result, delay - range*.1, delay +range*.1)) 
+    << " Timing sanity check";
 };
 
 /////////////////////////////////////////////
@@ -193,8 +193,8 @@ TEST( Stopwatch, Lap ) {
   //Check multipe laps
   int total = 100.0;
   double interval = 0.1;
-//  double range = interval/2.0;
-  double range = interval;
+  double range = interval/2.0;
+//  double range = interval;
   std::vector<double> refLaps;
 
   GTEST_COUT << "Sleeping for "<< total << " intervals of " 
