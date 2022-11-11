@@ -201,11 +201,9 @@ TEST( Stopwatch, Lap ) {
   for( int i = 0; i < total; i++) {
     timeDelay(interval);
     lap1 = sw.lap();
-//    GTEST_COUT << "LAP :"<<lap1<<std::endl;
 
     refLaps.push_back(lap1);
   }
-// double end = sw.stop();
 
   laps =sw.getLaps();
 
