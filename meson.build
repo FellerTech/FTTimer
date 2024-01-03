@@ -97,11 +97,12 @@ if doxygen.found()
     , output: 'Doxyfile'
     , configuration: cdata
     , install: true
-    , install_dir: meson.current_build_dir()
+    , install_dir: meson.current_build_dir().strip()+'/docs'
     )
   
   #  message('Doxyfile: '+ doxyfile)
-  dfile=meson.current_build_dir()+'/Doxyfile'
+  #dfile=meson.current_build_dir()+'/Doxyfile'
+  dfile= meson.current_build_dir() + '/docs/Doxyfile'
   
   #Specify input directory
   input = meson.current_source_dir()
