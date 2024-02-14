@@ -33,7 +33,7 @@ message('DOCUMENTATION_DIR: '+ meson.current_build_dir()+'/docs')
 #############################################
 hrgls_cmake = import('cmake')
 hrgls_proj = hrgls_cmake.subproject('Hourglass'
-  #  , hrgls_cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
+  #    , hrgls_cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
     , cmake_options : ['DCMAKE_CXX_FLAGS=-fpic']
   )
 #hrgls_dep = hrgls_proj.get_variable('cm_hrgls_dep')
@@ -47,7 +47,8 @@ hrgls_includes = [ 'subprojects/Hourglass',
 #############################################
 #Define library build information
 #############################################
-fttimer_lib = static_library( 'fttimer'
+fttimer_static = static_library( 'fttimer'
+  #fttimer_static = library( 'fttimer'
   #  , ['src/FTTimer.cpp', 'src/FTTimeTracker.cpp']
     , ['src/FTTimer.cpp']
   , include_directories : 'src'
@@ -60,6 +61,22 @@ fttimer_dep = declare_dependency(
   include_directories : include_directories('src')
   )
 
+#############################################
+#Define library build information
+#############################################
+fttimer_lib = library( 'fttimer'
+  #  , ['src/FTTimer.cpp', 'src/FTTimeTracker.cpp']
+    , ['src/FTTimer.cpp']
+  , include_directories : 'src'
+  , cpp_args : '-DBUILD_VERSION="'+version+'"'
+  , dependencies : hrgls_lib
+
+  )
+
+fttimer_inc = include_directories('src')
+fttimer_dep = declare_dependency(
+  include_directories : include_directories('src')
+  )
 
 # Build gtest
 gtest_proj = subproject('gtest')
@@ -72,7 +89,7 @@ tests = executable('FTTimerTest'
   , sources : tests_src
   , include_directories : ['src']
   , dependencies : [ fttimer_dep, gtest_dep, gmock_dep]
-  , link_with : [fttimer_lib]
+  , link_with : [fttimer_static]
   )
 
 test( 'gtest tests', tests )
